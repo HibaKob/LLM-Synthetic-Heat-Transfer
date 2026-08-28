@@ -34,7 +34,7 @@ model's own errors and biases.
 
 This project explores a complementary approach for a domain where correctness is
 **checkable**: engineering problems with numeric answers or executable code. Each
-generated example, whether of **Type A (analytical):** or **Type B (coding):** (see [Pipeline Description](#pipeline) for a description of the different problem types) is verified deterministically:
+generated example, whether of **Type A (analytical)** or **Type B (coding)** (see [Pipeline Description](#pipeline) for a description of the different problem types) is verified deterministically:
 
 - **Type A (analytical):** the stated answer is checked against an independent
   recomputation.
@@ -53,5 +53,6 @@ generating model, a concept that transfers to any domain with a verifiable groun
 ## To-Do List <a name="todo"></a>
 
 ## Contact Information <a name="contact"></a>
+For additional information, please contact Hiba Kobeissi ``hibakob@bu.edu``.
 
 ## Resources <a name="resources"></a>
