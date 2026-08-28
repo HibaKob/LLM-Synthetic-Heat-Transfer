@@ -1,4 +1,12 @@
 # LLM-Based Synthetic Heat-Transfer Problem Generation
+An open-source pipeline that uses large language models to generate synthetic
+undergraduate engineering heat-transfer problem-solving data, paired with **deterministic
+quality verification** for numeric-answer checking and code execution.
+
+> **Status: work in progress.** Seed set, verification, and a working generation
+> stage are implemented and runnable today. LLM-as-judge scoring, deduplication,
+> diversity balancing, and scale-up are on the roadmap below. See
+> [Project status](#project-status) for exactly what is and isn't built yet.
 
 <!-- -
 We will configure these once we make the repository public:
@@ -19,10 +27,24 @@ We will configure these once we make the repository public:
 * [Resources](#resources)
 
 ## Motivation <a name="motivation"></a>
+Synthetic data is increasingly used to train and post-train language models, but a
+central challenge is **quality control**: how do we know the generated examples are
+correct? Most pipelines rely on an LLM-as-judge, which is useful but inherits the
+model's own errors and biases.
 
+This project explores a complementary approach for a domain where correctness is
+**checkable**: engineering problems with numeric answers or executable code. Each
+generated example, whether of **Type A (analytical):** or **Type B (coding):** (see [Pipeline Description](#pipeline) for a description of the different problem types) is verified deterministically:
+
+- **Type A (analytical):** the stated answer is checked against an independent
+  recomputation.
+- **Type B (coding):** the generated solution is executed against test cases whose
+  answers are known analytically.
+
+The correctness signal therefore comes from computation, not from trusting the
+generating model, a concept that transfers to any domain with a verifiable ground truth.
 
 ## Roadmap <a name="roadmap"></a>
-
 
 ## Pipeline Description <a name="pipeline"></a>
 
