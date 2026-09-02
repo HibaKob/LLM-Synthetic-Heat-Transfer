@@ -15,9 +15,9 @@ Workflow:
 from __future__ import annotations
 
 import json
-import verification as v  # deterministic verifier
+from pathlib import Path
+from syntheticheatransfer import verification as v  # deterministic verifier
 
-OUTPUT_PATH = "heat_transfer_seeds.json"
 
 # Collected seeds
 _seeds: list[dict] = []
@@ -44,7 +44,7 @@ def add_type_a(
     computes the answer. The script evaluates it to fill answer_numeric, so the
     stored answer is correct by construction.
     """
-    answer_numeric = float(eval(check_expression, v._expression_namespace()))  # author-controlled expr
+    answer_numeric = float(eval(check_expression, v.expression_namespace()))  # author-controlled expression
     _seeds.append({
         "id": id,
         "type": "A",
@@ -81,8 +81,7 @@ def add_type_b(
     For long time-histories, return a summary value (e.g. final temp) to avoid huge 
     expected arrays.
     """
-    ns = v._safe_exec(reference_solution)
-    fn = ns[function_name]
+    fn = v.load_solution(reference_solution, function_name)
     test_cases = []
     for c in cases:
         args = list(c["args"])
@@ -107,7 +106,7 @@ def add_type_b(
 
 
 ###############################################################################
-#                             AUTHOR SEEDS   
+# AUTHOR SEEDS   
 ###############################################################################
 
 def author_seeds() -> None:
@@ -1161,11 +1160,21 @@ def author_seeds() -> None:
         provenance="human_authored",
     )
 
-# --------------------------------------------------------------------------- #
+###############################################################################
 # Build + verify + write
-# --------------------------------------------------------------------------- #
+###############################################################################
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+DATA_DIR = REPO_ROOT / "data"
+OUTPUT_PATH = DATA_DIR / "seeds" / "heat_transfer_seeds.json"
+
 
 def build() -> None:
+
+    v.create_output_folder(REPO_ROOT, "data")           
+    v.create_output_folder(DATA_DIR, "seeds")
+
     author_seeds()
 
     if not _seeds:

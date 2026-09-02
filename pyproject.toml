@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "syntheticheatransfer"
+version = "0.1.0"
+authors = [
+  { name="Hiba Kobeissi", email="hibakob@bu.edu" },
+]
+description = "An open-source pipeline that uses large language models to generate synthetic undergraduate engineering heat-transfer problem-solving data."
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "coverage==7.16.0",
+    "numpy==2.4.6",
+    "ollama==0.6.2",
+    "pytest==9.1.1",
+    "pytest-cov==7.1.0"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/HibaKob/LLM-Synthetic-Heat-Transfer"
+"Bug Tracker" = "https://github.com/HibaKob/LLM-Synthetic-Heat-Transfer/issues"
+
+
+[tool.coverage.run]
+omit = [
+    "scripts/*",
+    "tests/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+    "except ImportError",
+]
