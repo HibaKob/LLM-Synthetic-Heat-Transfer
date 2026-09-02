@@ -8,13 +8,12 @@ quality verification** for numeric-answer checking and code execution.
 > diversity balancing, and scale-up are on the roadmap below. See
 > [Project status](#project-status) for exactly what is and isn't built yet.
 
-<!-- -
-We will configure these once we make the repository public:
-[![python](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/)
+[![python](https://img.shields.io/badge/python-3.11.16-blue.svg)](https://www.python.org/)
 ![os](https://img.shields.io/badge/os-ubuntu%20|%20macos%20|%20windows-blue.svg)
-[![license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/sandialabs/sibl#license)
+[![license](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/license/mit)
 
-[![tests](https://github.com/elejeune11/microbundlecompute/workflows/tests/badge.svg)](https://github.com/elejeune11/microbundlecompute/actions) [![codecov](https://codecov.io/gh/elejeune11/microbundlecompute/branch/main/graph/badge.svg?token=EVCCPWCUE7)](https://codecov.io/gh/elejeune11/microbundlecompute) -->
+[![coverage_test](https://github.com/HibaKob/LLM-Synthetic-Heat-Transfer/actions/workflows/coverage_test.yml/badge.svg?branch=main)](https://github.com/HibaKob/LLM-Synthetic-Heat-Transfer/actions/workflows/coverage_test.yml)
+[![codecov](https://codecov.io/gh/HibaKob/LLM-Synthetic-Heat-Transfer/graph/badge.svg?token=SXCVUX5MT7)](https://codecov.io/gh/HibaKob/LLM-Synthetic-Heat-Transfer)
 
 
 ## Table of Contents
