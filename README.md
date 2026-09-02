@@ -1,4 +1,13 @@
 # LLM-Based Synthetic Heat-Transfer Problem Generation
+
+[![python](https://img.shields.io/badge/python-3.11.16-blue.svg)](https://www.python.org/) 
+![os](https://img.shields.io/badge/os-ubuntu%20|%20macos%20|%20windows-blue.svg)
+[![license](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/license/mit)
+
+[![coverage_test](https://github.com/HibaKob/LLM-Synthetic-Heat-Transfer/actions/workflows/coverage_test.yml/badge.svg?branch=main)](https://github.com/HibaKob/LLM-Synthetic-Heat-Transfer/actions/workflows/coverage_test.yml)
+[![codecov](https://codecov.io/gh/HibaKob/LLM-Synthetic-Heat-Transfer/graph/badge.svg?token=SXCVUX5MT7)](https://codecov.io/gh/HibaKob/LLM-Synthetic-Heat-Transfer)
+
+
 An open-source pipeline that uses large language models to generate synthetic
 undergraduate engineering heat-transfer problem-solving data, paired with **deterministic
 quality verification** for numeric-answer checking and code execution.
@@ -7,13 +16,6 @@ quality verification** for numeric-answer checking and code execution.
 > stage are implemented and runnable today. LLM-as-judge scoring, deduplication,
 > diversity balancing, and scale-up are on the roadmap below. See
 > [Project status](#project-status) for exactly what is and isn't built yet.
-
-[![python](https://img.shields.io/badge/python-3.11.16-blue.svg)](https://www.python.org/) 
-![os](https://img.shields.io/badge/os-ubuntu%20|%20macos%20|%20windows-blue.svg)
-[![license](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/license/mit)
-
-[![coverage_test](https://github.com/HibaKob/LLM-Synthetic-Heat-Transfer/actions/workflows/coverage_test.yml/badge.svg?branch=main)](https://github.com/HibaKob/LLM-Synthetic-Heat-Transfer/actions/workflows/coverage_test.yml)
-[![codecov](https://codecov.io/gh/HibaKob/LLM-Synthetic-Heat-Transfer/graph/badge.svg?token=SXCVUX5MT7)](https://codecov.io/gh/HibaKob/LLM-Synthetic-Heat-Transfer)
 
 
 ## Table of Contents
