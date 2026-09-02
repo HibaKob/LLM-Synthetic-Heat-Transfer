@@ -1,0 +1,55 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ---- Packaging / build ----
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+pip-wheel-metadata/
+
+# ---- Virtual environments ----
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# ---- Testing / coverage ----
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+
+# ---- Type checkers / linters caches ----
+.mypy_cache/
+.ruff_cache/
+.pytype/
+
+# ---- Secrets / config  ----
+.env
+.env.*
+*.key
+config.local.yaml
+secrets.yaml
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# ---- Project-specific ----
+# Large or regenerated outputs; keep small curated samples tracked instead.
+data/generated/*.jsonl
+data/generated/full/
+*.log
