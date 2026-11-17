@@ -1,0 +1,1445 @@
+{
+  "description": "Passed verification, failed a quality check (see 'quality').",
+  "rejected": [
+    {
+      "instruction": "A cylindrical pipe of radius 0.05 m and length 2 m is made of copper. Its surface temperature is 120 C and the ambient air temperature is 30 C. For steady one-dimensional conduction, find the heat transfer rate through the pipe in W.",
+      "reasoning": "Assuming steady one-dimensional conduction, the heat transfer rate through a cylindrical pipe is given by the formula Q = h*A*(T_s - T_inf), where h is the convective heat transfer coefficient, A is the surface area, T_s is the surface temperature, and T_inf is the ambient temperature. The surface area of a cylinder is A = 2*\u03c0*r*L, where r is the radius and L is the length.",
+      "answer_units": "W",
+      "check_expression": "-1000*2*math.pi*0.05*2*(120-30)",
+      "answer_numeric": -56548.66776461628,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "cond-A-01",
+      "topic": "conduction",
+      "subtopic": "plane wall, Fourier's law",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-cond-A-01-1",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_positive_magnitude",
+          "a_dimensions"
+        ],
+        "details": {
+          "a_positive_magnitude": "negative answer -56548.7 W",
+          "a_dimensions": "formula gives m K or m^2 K or m^3 K; answer units 'W' are kg m^2 s^-3"
+        }
+      }
+    },
+    {
+      "instruction": "A flat plate of length 2 m and width 1 m is used as a heat exchanger. The surface temperature is 50 C, and the ambient air temperature is 20 C. The plate has a thermal conductivity of 0.5 W/m*K. For steady one-dimensional conduction, find the heat transfer rate through the plate in W.",
+      "reasoning": "For steady one-dimensional conduction, the heat transfer rate is given by Fourier's law. We are given the thermal conductivity, temperature difference, and area of the plate.",
+      "answer_units": "W",
+      "check_expression": "-0.5 * 2 * 1 * (50 - 20)",
+      "answer_numeric": -30.0,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "cond-A-01",
+      "topic": "conduction",
+      "subtopic": "plane wall, Fourier's law",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-cond-A-01-2",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_positive_magnitude"
+        ],
+        "details": {
+          "a_positive_magnitude": "negative answer -30 W"
+        }
+      }
+    },
+    {
+      "instruction": "A copper rod of diameter 0.05 m and length 1.5 m is exposed to air at 20 C. The surrounding air has a temperature of 10 C and a convective heat transfer coefficient of 10 W/m^2*K. Find the steady heat transfer rate through the rod in W.",
+      "reasoning": "The heat transfer rate through the rod is given by Newton's law of cooling. We need to calculate the surface area of the rod and the temperature difference between the rod and the surrounding air.",
+      "answer_units": "W",
+      "check_expression": "-10 * np.pi * (0.05 ** 2) * 1.5 * (20 - 10)",
+      "answer_numeric": -1.1780972450961726,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "cond-A-02",
+      "topic": "conduction",
+      "subtopic": "plane wall, heat rate with area",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-cond-A-02-3",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_positive_magnitude",
+          "a_dimensions",
+          "a_circular_area"
+        ],
+        "details": {
+          "a_positive_magnitude": "negative answer -1.1781 W",
+          "a_dimensions": "formula gives kg m^3 s^-3 or m^3 K^2; answer units 'W' are kg m^2 s^-3",
+          "a_circular_area": "pi*D^2 with D = 0.05 m and no /4 (circle area is pi*D^2/4)"
+        }
+      }
+    },
+    {
+      "instruction": "A copper rod of diameter 0.05 m and length 2 m is exposed to air at 20 C. The surface temperature of the rod is 80 C. Find the steady convective heat transfer rate from the rod in W.",
+      "reasoning": "The heat transfer rate is given by the convective heat transfer coefficient (h) times the surface area (A) times the temperature difference (T_s - T_inf). We need to calculate the surface area and the convective heat transfer coefficient.",
+      "answer_units": "W",
+      "check_expression": "-418*0.001*math.pi*2*(80-20)",
+      "answer_numeric": -157.58228750406403,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "cond-A-02",
+      "topic": "conduction",
+      "subtopic": "plane wall, heat rate with area",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-cond-A-02-4",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_positive_magnitude",
+          "a_numbers_grounded"
+        ],
+        "details": {
+          "a_positive_magnitude": "negative answer -157.582 W",
+          "a_numbers_grounded": "numbers not traceable to the problem text: 418"
+        }
+      }
+    },
+    {
+      "instruction": "A copper rod with a diameter of 0.02 m and a length of 1.5 m has a convective heat transfer coefficient of 200 W/m^2*K. If the surface temperature of the rod is 95 C and the ambient air temperature is 25 C, find the heat transfer rate in W.",
+      "reasoning": "Heat transfer rate (Q) can be calculated using the formula Q = h*A*(T_s - T_inf), where h is the convective heat transfer coefficient, A is the surface area, T_s is the surface temperature, and T_inf is the ambient air temperature.",
+      "answer_units": "W",
+      "check_expression": "200 * np.pi * (0.02 ** 2) * 1.5 * (95 - 25)",
+      "answer_numeric": 26.389378290154266,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "cond-A-03",
+      "topic": "conduction",
+      "subtopic": "thermal resistance (R-value), U-value",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-cond-A-03-6",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions",
+          "a_circular_area"
+        ],
+        "details": {
+          "a_dimensions": "formula gives kg m^3 s^-3; answer units 'W' are kg m^2 s^-3",
+          "a_circular_area": "pi*D^2 with D = 0.02 m and no /4 (circle area is pi*D^2/4)"
+        }
+      }
+    },
+    {
+      "instruction": "A flat-plate fin with a square cross-section is attached to a heat source. The fin is 0.05 m long, 0.02 m wide, and has a thermal conductivity of 25 W/m*K. The surface temperature of the fin is 45 C, and the ambient temperature is 20 C. Find the heat transfer rate in W.",
+      "reasoning": "This problem involves a flat-plate fin, which can be modeled as a one-dimensional heat transfer problem. The heat transfer rate can be calculated using the formula for a fin with a square cross-section, which involves the thermal conductivity, cross-sectional area, and temperature differences.",
+      "answer_units": "W",
+      "check_expression": "25 * 0.02 * 0.02 * math.log((45-20)/0.05)",
+      "answer_numeric": 0.06214608098422192,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "cond-A-04",
+      "topic": "conduction",
+      "subtopic": "composite wall, series resistance",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-cond-A-04-8",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions"
+        ],
+        "details": {
+          "a_dimensions": "log() of a quantity with units m^-1 K; answer units 'W' are kg m^2 s^-3"
+        }
+      }
+    },
+    {
+      "instruction": "A copper rod (length 0.5 m, diameter 0.02 m, thermal conductivity 386 W/m*K) is heated at one end by a heat source at 80 C. The other end is exposed to ambient air at 20 C with a convection coefficient of 10 W/m^2*K. Find the steady heat transfer rate in W.",
+      "reasoning": "The problem involves a heat transfer rate through a rod with one end at a known temperature and the other end exposed to convection. We can use the formula for heat transfer through a rod with one end insulated and the other end exposed to convection: Q = k*A*(T_s - T_inf) / (L/Ar), where k is the thermal conductivity, A is the cross-sectional area, T_s is the surface temperature, T_inf is the ambient temperature, and L/Ar is the ratio of the rod's length to its cross-sectional area.",
+      "answer_units": "W",
+      "check_expression": "-(20-80)/(386*(np.pi*0.02**2)*0.5 / (np.pi*(0.02**2)*0.5) + 1/(10*386*0.02**2))",
+      "answer_numeric": 0.1551800383259853,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "cond-A-06",
+      "topic": "conduction",
+      "subtopic": "thermal resistance network with convection",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-cond-A-06-11",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions",
+          "a_circular_area"
+        ],
+        "details": {
+          "a_dimensions": "adds/subtracts kg m s^-3 K^-1 and kg^-2 m^-3 s^6 K^2 in '386 * (np.pi * 0.02 ** 2) * 0.5 / (np.pi * 0.02 ** 2 * 0.5) + 1 / (10 * 386 * 0.02 ** 2)'; answer units 'W' are kg m^2 s^-3",
+          "a_circular_area": "pi*D^2 with D = 0.02 m and no /4 (circle area is pi*D^2/4)"
+        }
+      }
+    },
+    {
+      "instruction": "A copper rod (diameter 0.02 m, thermal conductivity 386 W/m*K) is heated at one end by a heat source at 100 C, and loses heat at the other end through a convective boundary with a coefficient of 1000 W/m^2*K and ambient temperature of 25 C. Find the steady heat transfer rate in W.",
+      "reasoning": "The heat transfer rate can be calculated using the formula q = h*A*(T_s - T_inf), where q is the heat transfer rate, h is the convective coefficient, A is the surface area, T_s is the surface temperature, and T_inf is the ambient temperature. In this case, the surface area is the area of the rod's surface, and the surface temperature is the temperature of the rod at the heated end.",
+      "answer_units": "W",
+      "check_expression": "-(25-100)/(np.pi*0.02**2*1000*386)",
+      "answer_numeric": 0.15461943953228174,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "cond-A-06",
+      "topic": "conduction",
+      "subtopic": "thermal resistance network with convection",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-cond-A-06-12",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions",
+          "a_circular_area"
+        ],
+        "details": {
+          "a_dimensions": "formula gives kg^-1 m^-3 s^3 K^2 or kg^-2 m^-3 s^6 K^3; answer units 'W' are kg m^2 s^-3",
+          "a_circular_area": "pi*D^2 with D = 0.02 m and no /4 (circle area is pi*D^2/4)"
+        }
+      }
+    },
+    {
+      "instruction": "A cylindrical copper pipe (radius 0.05 m) carries hot water (T_s = 95 C) through a building. The pipe is surrounded by a 5 cm thick layer of foam insulation (k = 0.04 W/m*K) with a radius of 0.1 m. The ambient air temperature is -10 C and the convection heat transfer coefficient is 15 W/m^2*K. What is the convective heat loss per unit length of the pipe in W/m?",
+      "reasoning": "This problem involves convection heat transfer from a pipe to the surrounding air. The heat transfer rate is given by the formula Q = h*A*(T_s - T_inf), where h is the convection heat transfer coefficient, A is the surface area of the pipe, T_s is the surface temperature, and T_inf is the ambient air temperature.",
+      "answer_units": "W/m",
+      "check_expression": "15 * 2 * math.pi * 0.05 * (95 + 10) / (1/15 + (0.05/0.04) * 1e2)",
+      "answer_numeric": 3.9562967186065494,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "cond-A-07",
+      "topic": "conduction",
+      "subtopic": "thermal resistance network with convection",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-cond-A-07-13",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions"
+        ],
+        "details": {
+          "a_dimensions": "formula gives kg^2 m s^-6 K^-1; answer units 'W/m' are kg m s^-3"
+        }
+      }
+    },
+    {
+      "instruction": "A cylindrical rod made of copper (k = 400 W/m*K) with a diameter of 10 mm and a length of 0.5 m is exposed to air at 30 C. The convective heat transfer coefficient on the surface of the rod is 50 W/m^2*K. Find the rate of heat transfer from the rod to the air.",
+      "reasoning": "The heat transfer from the rod to the air is given by the convective heat transfer equation. The surface area of the rod is given by its circumference times its length.",
+      "answer_units": "W",
+      "check_expression": "50 * 3.14 * 0.01 * 0.5 * (30 - 20)",
+      "answer_numeric": 7.8500000000000005,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "cond-A-07",
+      "topic": "conduction",
+      "subtopic": "thermal resistance network with convection",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-cond-A-07-14",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions"
+        ],
+        "details": {
+          "a_dimensions": "adds/subtracts K and m in '30 - 20'; answer units 'W' are kg m^2 s^-3"
+        }
+      }
+    },
+    {
+      "instruction": "A copper sheet (k = 386 W/m*K) of thickness 2 mm is attached to a steel plate. The sheet is heated to a temperature of 100 C, while the plate is at a temperature of 30 C. The copper sheet is exposed to air with a convective heat transfer coefficient of 100 W/m^2*K. What is the rate of heat transfer from the copper sheet to the steel plate?",
+      "reasoning": "The problem can be solved using the formula for heat transfer through a composite wall, which involves the thermal resistances of the copper sheet and the convective resistance of the air.",
+      "answer_units": "W",
+      "check_expression": "-((100-30)/(2*math.pi*0.001*386) + 1/(2*math.pi*0.001*386*100))",
+      "answer_numeric": -28.86641856441345,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "cond-A-08",
+      "topic": "conduction",
+      "subtopic": "cylindrical shell, thermal resistance network with convection",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-cond-A-08-15",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_positive_magnitude",
+          "a_dimensions"
+        ],
+        "details": {
+          "a_positive_magnitude": "negative answer -28.8664 W",
+          "a_dimensions": "formula gives kg^-1 m^-1 s^3 K^2 or kg^-1 m^-2 s^3 K^2; answer units 'W' are kg m^2 s^-3"
+        }
+      }
+    },
+    {
+      "instruction": "A heat exchanger consists of a copper tube (k = 386 W/m*K) with a length of 2 m and an inner radius of 0.02 m. The tube is surrounded by a layer of fiberglass (k = 0.035 W/m*K) with a thickness of 10 mm. The fluid inside the tube is at a temperature of 40\u00b0C, while the surroundings are at 10\u00b0C. The convective heat transfer coefficient due to air is 150 W/m\u00b2*K. What is the rate of heat transfer through the tube and the surrounding layer?",
+      "reasoning": "The rate of heat transfer through the tube and the surrounding layer can be calculated using the formula for heat transfer through a composite wall. We need to calculate the thermal resistance of the tube and the surrounding layer, and then add them together to find the total thermal resistance.",
+      "answer_units": "W",
+      "check_expression": "-(10-40)/(2*math.pi*0.02*2*150 + math.log(0.03/0.02)/(2*math.pi*2*386) + math.log(0.11/0.03)/(2*math.pi*2*0.035))",
+      "answer_numeric": 0.7379474755590074,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "cond-A-08",
+      "topic": "conduction",
+      "subtopic": "cylindrical shell, thermal resistance network with convection",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-cond-A-08-16",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions"
+        ],
+        "details": {
+          "a_dimensions": "adds/subtracts kg m^3 s^-3 K^-1 and kg^-1 m^-3 s^3 K in '2 * math.pi * 0.02 * 2 * 150 + math.log(0.03 / 0.02) / (2 * math.pi * 2 * 386)'; answer units 'W' are kg m^2 s^-3"
+        }
+      }
+    },
+    {
+      "instruction": "A cylindrical pipe of diameter 0.05 m and length 2 m is heated by a hot gas at 500 C. The convection coefficient is 10 W/m^2*K. Find the convective heat loss in W.",
+      "reasoning": "The surface area of the pipe can be approximated as the lateral surface area, which is the circumference times the length. The temperature difference is between the pipe and the gas. The heat transfer rate is then given by the product of the convection coefficient, surface area, and temperature difference.",
+      "answer_units": "W",
+      "check_expression": "10 * math.pi * 0.05 * 2 * (500 - 20)",
+      "answer_numeric": 1507.9644737231006,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "conv-A-01",
+      "topic": "convection",
+      "subtopic": "Newton's law of cooling",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-conv-A-01-17",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions"
+        ],
+        "details": {
+          "a_dimensions": "adds/subtracts K and kg s^-3 K^-1 in '500 - 20'; answer units 'W' are kg m^2 s^-3"
+        }
+      }
+    },
+    {
+      "instruction": "A 10 cm diameter pipe of length 5 m has a surface temperature of 85 C and is surrounded by air at 25 C. If the pipe loses 250 W by convection, find the convection coefficient h in W/m^2*K.",
+      "reasoning": "To find the convection coefficient h, we can rearrange the formula for convective heat transfer: Q = h*A*(T_s - T_inf). We know the heat transfer rate Q (250 W), the surface temperature T_s (85 C), the fluid temperature T_inf (25 C), and we need to find the convection coefficient h.",
+      "answer_units": "W/m^2*K",
+      "check_expression": "250/(np.pi*0.1**2*5*(85-25))",
+      "answer_numeric": 26.525823848649225,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "conv-A-02",
+      "topic": "convection",
+      "subtopic": "solve for convection coefficient",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-conv-A-02-19",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions"
+        ],
+        "details": {
+          "a_dimensions": "formula gives kg m s^-3 K^-1 or kg m^-1 s^-3 K^-1; answer units 'W/m^2*K' are kg s^-3 K^-1"
+        }
+      }
+    },
+    {
+      "instruction": "A cylindrical pipe of diameter 0.05 m and length 2 m has a surface temperature of 80 C and is surrounded by a fluid at 30 C. If the pipe loses 2400 W of heat by convection, find the convection coefficient h in W/m^2*K.",
+      "reasoning": "The heat transfer rate is given by the convection coefficient times the surface area and the temperature difference between the surface and the fluid.",
+      "answer_units": "W/m^2*K",
+      "check_expression": "2400/(np.pi*0.05**2*2*(80-30))",
+      "answer_numeric": 3055.77490736439,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "conv-A-02",
+      "topic": "convection",
+      "subtopic": "solve for convection coefficient",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-conv-A-02-20",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_circular_area"
+        ],
+        "details": {
+          "a_circular_area": "pi*D^2 with D = 0.05 m and no /4 (circle area is pi*D^2/4)"
+        }
+      }
+    },
+    {
+      "instruction": "A steel rod with a diameter of 0.02 m and a length of 1 m is heated by a flame. The convective heat transfer coefficient is 500 W/m^2*K, and the ambient air temperature is 25\u00b0C. Find the heat transfer rate from the rod to the air in W.",
+      "reasoning": "The heat transfer rate is given by the product of the convective heat transfer coefficient, the surface area of the rod, and the temperature difference between the rod and the air.",
+      "answer_units": "W",
+      "check_expression": "500 * np.pi * (0.02**2) * 1 * (100 - 25)",
+      "answer_numeric": 47.12388980384689,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "conv-A-03",
+      "topic": "convection",
+      "subtopic": "Nusselt number to h",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-conv-A-03-21",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions",
+          "a_circular_area"
+        ],
+        "details": {
+          "a_dimensions": "adds/subtracts dimensionless and K in '100 - 25'; answer units 'W' are kg m^2 s^-3",
+          "a_circular_area": "pi*D^2 with D = 0.02 m and no /4 (circle area is pi*D^2/4)"
+        }
+      }
+    },
+    {
+      "instruction": "Water flows through a cylindrical pipe with inner radius 0.02 m. The pipe is made of a material with thermal conductivity 0.5 W/mK. Water flows at a velocity of 2 m/s. The temperature difference between the pipe surface and the surrounding water is 50\u00b0C. Find the heat transfer rate through the pipe.",
+      "reasoning": "The problem involves convection heat transfer through a cylindrical pipe. We can use the formula for convective heat transfer through a cylindrical pipe: Q = h*A*(T_s - T_inf). We need to calculate the heat transfer coefficient (h) first. We can use the formula for the Nusselt number (Nu) to get h. The Nusselt number is given by Nu = 4.364. The formula for Nu is Nu = (4/3)*(Re^0.5)*Pr^0.333. We can calculate the Reynolds number (Re) and the Prandtl number (Pr) using the given velocity and the kinematic viscosity of water.",
+      "answer_units": "W",
+      "check_expression": "(4/3)*((2*math.pi*0.02)/1.2e-6)**0.5*(7*math.sqrt(0.02/(4*math.sqrt(0.02)))*0.02/(0.02+0.02))*0.5*0.02*50",
+      "answer_numeric": 141.9771969072655,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "conv-A-04",
+      "topic": "convection",
+      "subtopic": "Reynolds number",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-conv-A-04-24",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_numbers_grounded"
+        ],
+        "details": {
+          "a_numbers_grounded": "numbers not traceable to the problem text: 1.2e-06, 7"
+        }
+      }
+    },
+    {
+      "instruction": "A horizontal cylindrical pipe has a diameter of 0.05 m and a length of 2 m. The pipe is exposed to ambient air at 25 C. If the pipe is heated to a uniform surface temperature of 90 C, calculate the convective heat transfer coefficient h at the center of the pipe. Given that the kinematic viscosity of air at 50 C is 1.82*10^-5 m^2/s and the thermal diffusivity of air at 50 C is 2.07*10^-5 m^2/s.",
+      "reasoning": "The problem involves calculating the convective heat transfer coefficient h at the center of a horizontal cylindrical pipe. We will use the Reynolds number and the Nusselt number to find h. The Reynolds number will be used to determine the flow regime, and the Nusselt number will be used to find h.",
+      "answer_units": "W/m^2/K",
+      "check_expression": "math.pi * 0.05**3 * 2 * 0.5 * 0.5 * 0.5 * (90-25) / (1.82*1e-5 * 2.07*1e-5)",
+      "answer_numeric": 16938366.187833168,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "conv-A-05",
+      "topic": "convection",
+      "subtopic": "Grashof number",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-conv-A-05-25",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_units_match_question"
+        ],
+        "details": {
+          "a_units_match_question": "unrecognized answer units 'W/m^2/K'"
+        }
+      }
+    },
+    {
+      "instruction": "A horizontal cylindrical pipe has a diameter of 0.1 m and is maintained at a uniform surface temperature of 100 C. It is submerged in a large tank of water at 25 C. Calculate the Nusselt number for this pipe, knowing that the thermal conductivity of water at 50 C is 0.6 W/mK.",
+      "reasoning": "The heat transfer coefficient is needed to calculate the Nusselt number. The convection heat transfer coefficient can be estimated using the film temperature, which is the average of the surface and ambient temperatures.",
+      "answer_units": "dimensionless",
+      "check_expression": "(0.6/(0.6 + 0.0253)) * (0.0253/0.01) * (math.pi * 0.1)**2 * (100-25) / (0.6 * (100+25))",
+      "answer_numeric": 0.23959794468021178,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "conv-A-05",
+      "topic": "convection",
+      "subtopic": "Grashof number",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-conv-A-05-26",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_numbers_grounded",
+          "a_circular_area"
+        ],
+        "details": {
+          "a_numbers_grounded": "numbers not traceable to the problem text: 0.0253",
+          "a_circular_area": "pi*D^2 with D = 0.1 m and no /4 (circle area is pi*D^2/4)"
+        }
+      }
+    },
+    {
+      "instruction": "A vertical, uninsulated, thin rectangular fin of width 0.05 m and thickness 0.005 m is attached to a heat exchanger. The fin is exposed to ambient air at 30 C. If the heat transfer coefficient is 100 W/m^2*K and the temperature at the base of the fin is 80 C, find the total heat transfer rate out of the fin. Given the thermal conductivity of the fin material is 20 W/m*K.",
+      "reasoning": "The problem requires calculating the total heat transfer rate out of the fin. This can be done using the formula for heat transfer from a fin, which takes into account the heat transfer coefficient, the temperature difference between the fin and the ambient air, the dimensions of the fin, and the thermal conductivity of the fin material.",
+      "answer_units": "W",
+      "check_expression": "(100 * 0.05 * 0.005 * (80 - 30) + (20 * 0.05 * 0.005 / 0.005) * (100 * 0.05 * (80 - 30)))",
+      "answer_numeric": 251.25,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "conv-A-08",
+      "topic": "convection",
+      "subtopic": "Natural convection",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-conv-A-08-31",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions"
+        ],
+        "details": {
+          "a_dimensions": "adds/subtracts kg m^2 s^-3 and kg^2 m^3 s^-6 K^-1 in '100 * 0.05 * 0.005 * (80 - 30) + 20 * 0.05 * 0.005 / 0.005 * (100 * 0.05 * (80 - 30))'; answer units 'W' are kg m^2 s^-3"
+        }
+      }
+    },
+    {
+      "instruction": "A flat, rectangular metal plate of dimensions 1 m by 2 m and thickness 0.01 m is heated to a surface temperature of 100 C. It is placed in a well-stirred water bath at 20 C. Given the following water properties at 20 C: Thermal conductivity (k) = 0.6 W/m*K, and specific heat capacity (c_p) = 4180 J/kg*K. Find the heat transfer rate from the plate to the water.",
+      "reasoning": "This problem involves convection heat transfer between a flat plate and a fluid. We will use the flat plate equation for convection heat transfer.",
+      "answer_units": "W",
+      "check_expression": "(math.pi*0.01*(1+2)*0.6)*(100-20)/(math.log((1+2)/0.35))",
+      "answer_numeric": 2.1056697814205525,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "conv-A-08",
+      "topic": "convection",
+      "subtopic": "Natural convection",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-conv-A-08-32",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_numbers_grounded"
+        ],
+        "details": {
+          "a_numbers_grounded": "numbers not traceable to the problem text: 0.35"
+        }
+      }
+    },
+    {
+      "instruction": "A cylindrical rod with a diameter of 0.05 m and a length of 1 m is heated to a uniform temperature of 100 C. It is exposed to ambient air at 30 C. Calculate the rate of heat transfer from the rod. Given the following air properties at 50 C: Thermal conductivity (k) = 0.02943 W/m*K, and air density (\u03c1) = 1.138 kg/m^3.",
+      "reasoning": "This problem involves convective heat transfer from a cylindrical rod to ambient air. We can use the formula for convective heat transfer from a cylinder: Q = h*A*(T_s - T_inf). We can calculate the heat transfer coefficient (h) using the formula: h = (2*k)/(D*ln(1+(4*epsilon/D))) where epsilon is the emissivity of the rod, which is assumed to be 0.9.",
+      "answer_units": "W",
+      "check_expression": "((2*0.02943)/((0.05)*(np.log(1+(4*0.9/(0.05)))))*(0.05**2)*np.pi*(1))*(1*100-30)",
+      "answer_numeric": 0.15084619991019027,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "conv-A-09",
+      "topic": "convection",
+      "subtopic": "Natural convection",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-conv-A-09-33",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_precedence",
+          "a_circular_area"
+        ],
+        "details": {
+          "a_precedence": "'100-30' is split by operator precedence; brackets missing?",
+          "a_circular_area": "pi*D^2 with D = 0.05 m and no /4 (circle area is pi*D^2/4)"
+        }
+      }
+    },
+    {
+      "instruction": "A cylindrical rod with a diameter of 0.05 m and a length of 1.5 m is heated to a uniform temperature of 120 C. It is exposed to ambient air at 30 C. Calculate the rate of heat transfer from the rod. Given the following air properties at 50 C: Thermal conductivity (k) = 0.027 W/m*K, Prandtl number (Pr) = 0.703.",
+      "reasoning": "The problem involves a cylindrical rod, so we'll use the formula for convective heat transfer from a cylinder. We'll assume a uniform temperature and neglect radiation.",
+      "answer_units": "W",
+      "check_expression": "((0.27*(math.pi*0.05**2)*(120-30)*1.5)/((0.27*(math.pi*0.05**2)*(120-30)*1.5)*0.703))**0.67*0.027",
+      "answer_numeric": 0.03419036179222041,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "conv-A-09",
+      "topic": "convection",
+      "subtopic": "Natural convection",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-conv-A-09-34",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_numbers_grounded",
+          "a_circular_area"
+        ],
+        "details": {
+          "a_numbers_grounded": "numbers not traceable to the problem text: 0.67",
+          "a_circular_area": "pi*D^2 with D = 0.05 m and no /4 (circle area is pi*D^2/4)"
+        }
+      }
+    },
+    {
+      "instruction": "A vertical copper tube (L = 150 mm, D = 12 mm) is cooled by water (T = 25 C, Cp = 4186 J/kg*K, nu = 0.654*10^-6 m^2/s, rho = 995 kg/m^3, Pr = 6.2) flowing through it at a velocity uinf = 2 m/s. Calculate the heat transferred from the tube surface to the water.",
+      "reasoning": "The tube is assumed to be a long cylinder, and the flow is turbulent. The heat transfer coefficient is calculated using the Dittus-Boelter equation for turbulent flow.",
+      "answer_units": "W",
+      "check_expression": "((0.023*((2*0.654*1e-6)*(995*4186))**(4/5)*6.2**(1/3)))*(math.pi*(0.012*0.012)*(150*1e-3))*(25-25)",
+      "answer_numeric": 0.0,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "conv-A-10",
+      "topic": "convection",
+      "subtopic": "Forced convection",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-conv-A-10-35",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_finite_nonzero"
+        ],
+        "details": {
+          "a_finite_nonzero": "answer is exactly zero"
+        }
+      }
+    },
+    {
+      "instruction": "A cylindrical pipe with a diameter of 0.05 m and a length of 2 m is used to cool a process fluid. The pipe is exposed to ambient air at Tinf = 25 C. The air has a density of 1.2 kg/m^3 and a specific heat capacity of 1005 J/kg*K. The air is blown over the pipe at a speed of 20 m/s. If the pipe is losing 50 W of heat, what is the surface temperature of the pipe?",
+      "reasoning": "The heat transfer coefficient can be determined using the Reynolds number and the Nusselt number correlation for a pipe. The Reynolds number is calculated as Re = uinf * D / nu, where uinf is the air speed, D is the pipe diameter, and nu is the kinematic viscosity of the air. The Nusselt number correlation is Nu = 0.023 * (Re^0.8 * Pr^0.33) for a Reynolds number greater than 10^5. The heat transfer coefficient can then be calculated as h = Nu * k / D. Finally, the surface temperature of the pipe can be calculated using the heat transfer equation q = h * A * (T_s - T_inf).",
+      "answer_units": "C",
+      "check_expression": "50/(((0.023*(math.pow(20*0.05/1.2e-5, 0.8)*math.pow(1005/1.2, 0.33)))*0.03/0.05)*(math.pi*0.05*2))+25",
+      "answer_numeric": 25.14477749329313,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "conv-A-11",
+      "topic": "convection",
+      "subtopic": "Forced convection, surface temperature",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-conv-A-11-37",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_numbers_grounded"
+        ],
+        "details": {
+          "a_numbers_grounded": "numbers not traceable to the problem text: 1.2e-05, 0.33"
+        }
+      }
+    },
+    {
+      "instruction": "A copper sphere with a diameter of 0.05 m is heated electrically and dissipates 50 W. The sphere is exposed to still air at Tinf = 20 C (Cp = 1 kJ/kg*K, k = 0.025 W/m*K, mu = 2*10^-5 kg/m*s, R = 287 J/kg*K, P = 1 bar). Find the surface temperature of the sphere.",
+      "reasoning": "This problem involves heat transfer from a sphere to a surrounding fluid. We can use the formula for convective heat transfer from a sphere: Q = h*A*(T_s - T_inf), where h is the convective heat transfer coefficient. We can estimate h using the Ranz-Marshall correlation for a sphere in still air: Nu = 2 + (0.4*Re^0.5 + 0.06*Re^0.33)*Pr^0.4. The Nusselt number (Nu) is related to the convective heat transfer coefficient (h) by Nu = h*d/k, where d is the diameter of the sphere and k is the thermal conductivity of the fluid.",
+      "answer_units": "C",
+      "check_expression": "50/((2 + (0.4*(2*10**5)**0.5 + 0.06*(2*10**5)**0.33)*0.707**0.4)*0.025/0.05)*(0.05*4*np.pi/4)+20",
+      "answer_numeric": 20.097776299665373,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "conv-A-11",
+      "topic": "convection",
+      "subtopic": "Forced convection, surface temperature",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-conv-A-11-38",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_numbers_grounded"
+        ],
+        "details": {
+          "a_numbers_grounded": "numbers not traceable to the problem text: 0.33, 0.707"
+        }
+      }
+    },
+    {
+      "instruction": "A cylindrical pipe with a diameter of 0.05 m and a length of 2 m is insulated with a material with a thermal conductivity of 0.1 W/m*K. If the inner surface temperature is 300 K and the outer surface temperature is 250 K, find the rate of heat transfer through the insulation in W.",
+      "reasoning": "This is a steady-state heat transfer problem through a cylindrical pipe. We will use the formula for heat transfer through a cylindrical pipe with insulation: Q = h*A*(T_s - T_inf), where A is the surface area of the pipe and h is the heat transfer coefficient. However, since the thermal conductivity is given, we will use the formula: Q = -k*A*dT/dL, where k is the thermal conductivity, A is the cross-sectional area of the pipe, and dT/dL is the temperature gradient along the length of the pipe.",
+      "answer_units": "W",
+      "check_expression": "0.1*math.pi*(0.05**2)*2*(300 - 250)/0.05",
+      "answer_numeric": 1.5707963267948968,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "rad-A-01",
+      "topic": "radiation",
+      "subtopic": "Stefan-Boltzmann emissive power, black body",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-rad-A-01-39",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_circular_area"
+        ],
+        "details": {
+          "a_circular_area": "pi*D^2 with D = 0.05 m and no /4 (circle area is pi*D^2/4)"
+        }
+      }
+    },
+    {
+      "instruction": "A copper rod with a diameter of 0.02 m and a length of 1 m is exposed to air at 20\u00b0C. Find the rate of heat transfer from the rod due to convection, given the convection heat transfer coefficient, h = 10 W/m\u00b2K.",
+      "reasoning": "The problem requires the application of the convection heat transfer equation, which is given by q = h*A*(T_s - T_inf), where q is the rate of heat transfer, h is the convection heat transfer coefficient, A is the surface area of the rod, T_s is the surface temperature of the rod, and T_inf is the temperature of the surrounding air.",
+      "answer_units": "W",
+      "check_expression": "10 * np.pi * (0.02 ** 2) * (20 + 273.15) ** 4",
+      "answer_numeric": 92804590.36081398,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "rad-A-01",
+      "topic": "radiation",
+      "subtopic": "Stefan-Boltzmann emissive power, black body",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-rad-A-01-40",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_units_match_question",
+          "a_dimensions",
+          "a_circular_area"
+        ],
+        "details": {
+          "a_units_match_question": "question asks for ['h'] but units are 'W' (power)",
+          "a_dimensions": "formula gives kg m^2 s^-3 K^3; answer units 'W' are kg m^2 s^-3",
+          "a_circular_area": "pi*D^2 with D = 0.02 m and no /4 (circle area is pi*D^2/4)"
+        }
+      }
+    },
+    {
+      "instruction": "A copper rod of diameter 0.02 m and length 0.5 m is submerged in water at 20\u00b0C. The rod is initially at 100\u00b0C. Assuming a convective heat transfer coefficient of 100 W/m\u00b2K, find the rate of heat transfer from the rod to the water in W.",
+      "reasoning": "This is a problem of convective heat transfer from a solid to a fluid. The rate of heat transfer is given by Newton's law of cooling.",
+      "answer_units": "W",
+      "check_expression": "100 * math.pi * (0.02)**2 * 0.5 * (100 - 20)",
+      "answer_numeric": 5.026548245743669,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "rad-A-02",
+      "topic": "radiation",
+      "subtopic": "Gray surface net radiation to surroundings",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-rad-A-02-41",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_circular_area"
+        ],
+        "details": {
+          "a_circular_area": "pi*D^2 with D = 0.02 m and no /4 (circle area is pi*D^2/4)"
+        }
+      }
+    },
+    {
+      "instruction": "A rectangular fin (Surface 1) is attached to a flat plate (Surface 2). The dimensions of the fin are: L = 0.1 m, A = 0.02 m^2, and the plate has an area of A_plate = 0.1 m^2. The thermal conditions are: T_fin = 400 K, T_plate = 200 K. The fin is made of a material with a thermal conductivity of k = 10 W/m*K. Find the heat transfer rate q for the following convective conditions: h = 10 W/m^2*K, T_inf = 100 K.",
+      "reasoning": "This problem involves steady-state heat transfer from a fin attached to a flat plate. We can use the lumped capacitance method to solve this problem.",
+      "answer_units": "W",
+      "check_expression": "10 * 0.02 * (400 - 100) - 10 * 0.1 * (200 - 100)",
+      "answer_numeric": -40.0,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "rad-A-05",
+      "topic": "radiation",
+      "subtopic": "Radiosity, three-surface enclosure",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-rad-A-05-48",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_positive_magnitude",
+          "a_dimensions"
+        ],
+        "details": {
+          "a_positive_magnitude": "negative answer -40 W",
+          "a_dimensions": "adds/subtracts kg m^2 s^-3 and K in '10 * 0.02 * (400 - 100) - 10 * 0.1 * (200 - 100)'; answer units 'W' are kg m^2 s^-3"
+        }
+      }
+    },
+    {
+      "instruction": "A cylindrical rod has a convection coefficient h = 100 W/m^2*K, radius r = 0.005 m, and length L = 0.3 m. Find the convective heat transfer rate q.",
+      "reasoning": "The convective heat transfer rate q is given by q = h*A*(T_s - T_inf), where A is the surface area of the rod.",
+      "answer_units": "W",
+      "check_expression": "100 * 2 * math.pi * 0.005 * 0.3",
+      "answer_numeric": 0.9424777960769379,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "fin-A-01",
+      "topic": "extended_surfaces",
+      "subtopic": "Fin parameter m",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-fin-A-01-49",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions"
+        ],
+        "details": {
+          "a_dimensions": "formula gives kg m s^-3 K^-1 or kg m^2 s^-3 K^-1 or m or m^2; answer units 'W' are kg m^2 s^-3"
+        }
+      }
+    },
+    {
+      "instruction": "A copper heat sink with a thickness of 0.005 m and a surface area of 0.1 m^2 is attached to a surface at 85 C. The thermal conductivity of the copper is 386 W/m*K. The heat sink is exposed to ambient air at 25 C with a heat transfer coefficient of 25 W/m^2*K. Calculate the rate of heat transfer from the heat sink.",
+      "reasoning": "The problem involves a heat sink, which can be treated as a plane wall. The heat transfer rate can be calculated using the formula for convection heat transfer from a plane wall: Q = h*A*(T_s - T_inf). However, since the heat sink has a finite thickness, we need to consider the thermal resistance of the copper. We can use the formula for thermal resistance of a plane wall: R = L/k*A. The total thermal resistance is the sum of the convective resistance and the conductive resistance. We can then use the formula for heat transfer rate: Q = (T_s - T_inf) / (R_c + R_co).",
+      "answer_units": "W",
+      "check_expression": "(25*0.1*(85-25))/(0.005/386/0.1+0.005/25/0.1)",
+      "answer_numeric": 70437.95620437956,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "fin-A-03",
+      "topic": "extended_surfaces",
+      "subtopic": "Short fin heat rate",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-fin-A-03-53",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions"
+        ],
+        "details": {
+          "a_dimensions": "adds/subtracts kg^-1 m^-2 s^3 K and m^-1 K^-1 in '0.005 / 386 / 0.1 + 0.005 / 25 / 0.1'; answer units 'W' are kg m^2 s^-3"
+        }
+      }
+    },
+    {
+      "instruction": "A copper cylindrical rod with a diameter of 0.01 m and a length of 0.3 m is exposed to a cold water bath at 10 C. The rod is initially at a uniform temperature of 100 C. The heat transfer coefficient between the rod and the water is 400 W/m^2*K. Calculate the rate of heat transfer from the rod after 30 seconds.",
+      "reasoning": "This problem can be solved using the lumped capacitance method, assuming that the temperature of the rod remains uniform throughout the process. The rate of heat transfer is given by the equation Q = h*A*(T_s - T_inf), where h is the heat transfer coefficient, A is the surface area, T_s is the surface temperature, and T_inf is the ambient temperature.",
+      "answer_units": "W",
+      "check_expression": "(400* math.pi * (0.01)**2 * 0.3 * (100-10)) * math.exp(-400* math.pi * (0.01)**2 * 30 / (4186 * ( math.pi * (0.01)**2 * 0.3/4)))",
+      "answer_numeric": 8.524894004352108e-17,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "fin-A-03",
+      "topic": "extended_surfaces",
+      "subtopic": "Short fin heat rate",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-fin-A-03-54",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_numbers_grounded"
+        ],
+        "details": {
+          "a_numbers_grounded": "numbers not traceable to the problem text: 4186"
+        }
+      }
+    },
+    {
+      "instruction": "A cylindrical rod with a diameter of 0.02 m and a length of 0.5 m is heated by a current of 10 A flowing through it. The rod is made of a material with a thermal conductivity of 50 W/m*K and a specific heat capacity of 400 J/kg*K. The rod is suddenly immersed in a surrounding fluid at a temperature of 20 C. Assuming a constant convective heat transfer coefficient of 1000 W/m^2*K, calculate the initial temperature rise of the rod.",
+      "reasoning": "The problem involves calculating the initial temperature rise of the rod due to the sudden change in its surroundings. We can use the lumped capacitance method to model this situation.",
+      "answer_units": "K",
+      "check_expression": "math.log(10)/((400*0.002*math.pi*0.5)+(1000*0.002*math.pi*0.5*20))",
+      "answer_numeric": 0.035928215631344504,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "fin-A-04",
+      "topic": "extended_surfaces",
+      "subtopic": "Fin efficiency, finite length",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-fin-A-04-56",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions"
+        ],
+        "details": {
+          "a_dimensions": "log() of a quantity with units K; answer units 'K' are K"
+        }
+      }
+    },
+    {
+      "instruction": "A cylindrical rod of length 0.3 m and radius 0.01 m is heated with a surface heat flux of 2000 W/m^2. The rod is made of copper with a thermal conductivity of 386 W/m*K. Assuming a uniform heat flux and neglecting edge effects, compute the temperature difference between the surface and the center of the rod.",
+      "reasoning": "The heat flux is given, and we can use the formula q'' = k * (T_s - T_c) / Lc to solve for the temperature difference.",
+      "answer_units": "K",
+      "check_expression": "(386 / (0.01/2)) * (2000 / 386)",
+      "answer_numeric": 400000.0,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "trans-A-01",
+      "topic": "transient",
+      "subtopic": "Lumped capacitance Biot number",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-trans-A-01-57",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions",
+          "a_plausible_range"
+        ],
+        "details": {
+          "a_dimensions": "formula gives kg m^-1 s^-3 or kg s^-3 or kg^2 m^-1 s^-6 or kg^2 s^-6; answer units 'K' are K",
+          "a_plausible_range": "temperature 4e+05 K is outside [0, 3300]"
+        }
+      }
+    },
+    {
+      "instruction": "A copper rod of length 0.5 m and cross-sectional area 0.02 m^2 is heated by a current of 10 A and has a temperature difference of 20\u00b0C between its ends. If the rod's thermal conductivity is k = 386 W/m*K, compute the convective heat transfer rate (Q) at the rod's end facing a still air environment with a convective heat transfer coefficient of h = 2.5 W/m^2*K.",
+      "reasoning": "We will use the formula Q = h*A*(T_s - T_inf) to compute the convective heat transfer rate, where h is the convective heat transfer coefficient, A is the rod's cross-sectional area, T_s is the surface temperature, and T_inf is the ambient temperature.",
+      "answer_units": "W",
+      "check_expression": "(2.5*0.02)*20",
+      "answer_numeric": 1.0,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "trans-A-01",
+      "topic": "transient",
+      "subtopic": "Lumped capacitance Biot number",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-trans-A-01-58",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_units_match_question"
+        ],
+        "details": {
+          "a_units_match_question": "question asks for ['h'] but units are 'W' (power)"
+        }
+      }
+    },
+    {
+      "instruction": "A cylindrical rod has length 0.5 m, diameter 0.02 m, thermal conductivity 20 W/m*K, and a temperature difference of 10 K between its ends. Find the rate of heat transfer.",
+      "reasoning": "This is a one-dimensional heat transfer problem. The rate of heat transfer can be calculated using the formula for conduction heat transfer, which is Q = k \u2217 A \u2217 (T_s - T_inf) / L.",
+      "answer_units": "W",
+      "check_expression": "20 * np.pi * (0.02)**2 * 10 / 0.5",
+      "answer_numeric": 0.5026548245743669,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "trans-A-02",
+      "topic": "transient",
+      "subtopic": "Lumped capacitance time constant",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-trans-A-02-59",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_circular_area"
+        ],
+        "details": {
+          "a_circular_area": "pi*D^2 with D = 0.02 m and no /4 (circle area is pi*D^2/4)"
+        }
+      }
+    },
+    {
+      "instruction": "A thin metal rod with length 0.5 m and cross-sectional area 0.01 m^2 is initially at 100 C. It is suddenly immersed in a water bath at 20 C, with a convective heat transfer coefficient of 100 W/m^2 K. Find its temperature after 10 s.",
+      "reasoning": "Assume steady-state conduction and neglect radiation. The energy balance is q = h*A*(T_s - T_inf), where q is the heat transfer rate per unit length. Since the temperature is changing with time, we can write q = mc(dT/dt), where m is the mass per unit length and c is the specific heat capacity. Equating these two expressions, we get h*A*(T_s - T_inf) = mc(dT/dt). Rearranging and integrating, we get T(t) = T_inf + (T_0 - T_inf)*exp(-h*A*t/mc).",
+      "answer_units": "C",
+      "check_expression": "20+(100-20)*math.exp(-100*0.01*10/(0.5*4186))",
+      "answer_numeric": 99.61868518504012,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "trans-A-03",
+      "topic": "transient",
+      "subtopic": "Lumped capacitance temperature at time t",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-trans-A-03-61",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_numbers_grounded"
+        ],
+        "details": {
+          "a_numbers_grounded": "numbers not traceable to the problem text: 4186"
+        }
+      }
+    },
+    {
+      "instruction": "A copper rod with a diameter of 5 mm and a length of 10 m is heated by an electric current. After 30 minutes, the temperature at the center of the rod is 100 C. Find the temperature at the surface, assuming a thermal conductivity of 386 W/m-K and a heat transfer coefficient of 10 W/m^2-K.",
+      "reasoning": "We can use the heat equation for a rod, but since the temperature is steady-state and one-dimensional, we can use the formula for heat transfer through a rod: q = -k*A*(dT/dx). We can rearrange this to solve for the temperature gradient, and then integrate to find the temperature at the surface.",
+      "answer_units": "C",
+      "check_expression": "100 + (100 - 20) * math.exp(-(10 * math.pi * 5e-3**2 * 10 / (386 * 30*60)))",
+      "answer_numeric": 179.99999909568433,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "trans-A-03",
+      "topic": "transient",
+      "subtopic": "Lumped capacitance temperature at time t",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-trans-A-03-62",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_units_match_question",
+          "a_circular_area"
+        ],
+        "details": {
+          "a_units_match_question": "question asks for ['h'] but units are 'C' (temperature)",
+          "a_circular_area": "pi*D^2 with D = 0.005 m and no /4 (circle area is pi*D^2/4)"
+        }
+      }
+    },
+    {
+      "instruction": "A copper rod of diameter 0.05 m and length 1 m is heated to a temperature of 150\u00b0C. The ambient air is at a temperature of 25\u00b0C. The convective heat transfer coefficient is 10 W/m^2*K. Find the heat transfer rate from the rod to the air.",
+      "reasoning": "The heat transfer rate can be calculated using the formula for convective heat transfer: q = h*A*(T_s - T_inf).",
+      "answer_units": "W",
+      "check_expression": "10 * np.pi * (0.05 ** 2) * 125",
+      "answer_numeric": 9.817477042468106,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "trans-A-04",
+      "topic": "transient",
+      "subtopic": "Thermal diffusivity",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-trans-A-04-64",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_circular_area"
+        ],
+        "details": {
+          "a_circular_area": "pi*D^2 with D = 0.05 m and no /4 (circle area is pi*D^2/4)"
+        }
+      }
+    },
+    {
+      "instruction": "A copper wire has diameter 0.002 m and thermal conductivity 386 W/mK. Find the heat flux through the wire when its temperature is 120\u00b0C and the ambient temperature is 25\u00b0C.",
+      "reasoning": "The heat flux can be found using the formula q'' = k / A * (T_s - T_inf), where k is the thermal conductivity, A is the surface area, and (T_s - T_inf) is the temperature difference.",
+      "answer_units": "W/m^2",
+      "check_expression": "386/(math.pi*(0.002)**2)*100",
+      "answer_numeric": 3071690401.67358,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "trans-A-05",
+      "topic": "transient",
+      "subtopic": "Fourier number",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-trans-A-05-65",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions",
+          "a_circular_area"
+        ],
+        "details": {
+          "a_dimensions": "formula gives kg m^-1 s^-3 K^-1; answer units 'W/m^2' are kg s^-3",
+          "a_circular_area": "pi*D^2 with D = 0.002 m and no /4 (circle area is pi*D^2/4)"
+        }
+      }
+    },
+    {
+      "instruction": "A cylindrical rod of radius 0.01 m and length 0.2 m is exposed to a convective environment with a heat transfer coefficient of 100 W/m^2K. The surface temperature of the rod is 300 K and the ambient temperature is 250 K. Find the rate of heat transfer from the rod.",
+      "reasoning": "The rate of heat transfer can be calculated using the formula for convective heat transfer: Q = h*A*(T_s - T_inf).",
+      "answer_units": "W",
+      "check_expression": "100 * math.pi * (0.01)**2 * 0.2 * (300 - 250)",
+      "answer_numeric": 0.31415926535897937,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "trans-A-05",
+      "topic": "transient",
+      "subtopic": "Fourier number",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-trans-A-05-66",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions"
+        ],
+        "details": {
+          "a_dimensions": "formula gives kg m s^-3 or kg m^3 s^-3 or m K or m^3 K; answer units 'W' are kg m^2 s^-3"
+        }
+      }
+    },
+    {
+      "instruction": "A copper rod of diameter 0.02 m and length 1.5 m is heated by a fluid with a temperature of 95 C. The surrounding air is at 25 C. Find the convective heat transfer rate per unit length in Watts.",
+      "reasoning": "The convective heat transfer rate is given by the formula h*A*(T_s - T_inf). We need to find the convective heat transfer coefficient h first. We can use the formula for natural convection over a horizontal cylinder, which is h = 0.36 * (k / D) * (D / L)^(-0.25) * (T_s - T_inf)^(0.25). We are given the diameter D = 0.02 m, length L = 1.5 m, and temperatures T_s = 95 C and T_inf = 25 C.",
+      "answer_units": "W/m",
+      "check_expression": "0.36 * (386 * (0.02 / 1.5)**(-0.25) * (95 - 25)**0.25)",
+      "answer_numeric": 1182.8498830999463,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "hx-A-01",
+      "topic": "heat_exchangers",
+      "subtopic": "LMTD counterflow",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-hx-A-01-67",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_numbers_grounded"
+        ],
+        "details": {
+          "a_numbers_grounded": "numbers not traceable to the problem text: 0.36, 386"
+        }
+      }
+    },
+    {
+      "instruction": "A flat plate with a length of 0.5 m and a width of 0.2 m is exposed to a free stream velocity of 5 m/s. If the plate temperature is 50 C and the ambient air temperature is 25 C, calculate the convective heat transfer coefficient (h) in W/m^2 K.",
+      "reasoning": "The convective heat transfer coefficient (h) can be calculated using the drag equation and the Reynolds number.",
+      "answer_units": "W/m^2 K",
+      "check_expression": "(0.5 * 0.2 * 0.5) * math.pi * 5**2 / (math.log10(5 * 0.2 / (5 * 0.2**2 + math.sqrt(math.log10(5 * 0.2 / (5 * 0.2**2)))))) * (50 - 25)",
+      "answer_numeric": -6383.977023999787,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "hx-A-01",
+      "topic": "heat_exchangers",
+      "subtopic": "LMTD counterflow",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-hx-A-01-68",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_positive_magnitude",
+          "a_dimensions",
+          "a_plausible_range"
+        ],
+        "details": {
+          "a_positive_magnitude": "negative answer -6383.98 W/m^2 K",
+          "a_dimensions": "log10() of a quantity with units m^-1; answer units 'W/m^2 K' are kg s^-3 K^-1",
+          "a_plausible_range": "h = -6384 W/m^2K is outside [0.1, 200000]"
+        }
+      }
+    },
+    {
+      "instruction": "A steel rod of diameter 0.02 m and length 2 m is heated from 20 C to 80 C by a fluid flowing through it. The heat transfer coefficient is 100 W/m^2C. Compute the heat transfer rate in Watts.",
+      "reasoning": "Use the formula q = h*A*(T_s - T_inf), where q is the heat transfer rate, h is the heat transfer coefficient, A is the surface area, T_s is the surface temperature, and T_inf is the fluid temperature.",
+      "answer_units": "W",
+      "check_expression": "100 * math.pi * (0.02)**2 * 2 * (80-20)",
+      "answer_numeric": 15.079644737231009,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "hx-A-02",
+      "topic": "heat_exchangers",
+      "subtopic": "LMTD parallel flow",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-hx-A-02-69",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_circular_area"
+        ],
+        "details": {
+          "a_circular_area": "pi*D^2 with D = 0.02 m and no /4 (circle area is pi*D^2/4)"
+        }
+      }
+    },
+    {
+      "instruction": "A copper rod of 1.5 cm diameter and 0.5 m length is heated by an electric current. The rod's temperature is initially at 20 C. After 10 minutes, the temperature at the end of the rod is 50 C. Compute the rate of heat transfer through the rod, assuming a uniform temperature distribution.",
+      "reasoning": "We can use the formula for heat transfer due to conduction, q = k*A*(\u0394T)/L, where k is the thermal conductivity of copper, A is the cross-sectional area of the rod, \u0394T is the temperature difference, and L is the length of the rod.",
+      "answer_units": "W",
+      "check_expression": "math.pi * (0.0075)**2 * 0.5 * 30 / (386 * 0.5)",
+      "answer_numeric": 1.3734294308115999e-05,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "hx-A-02",
+      "topic": "heat_exchangers",
+      "subtopic": "LMTD parallel flow",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-hx-A-02-70",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_numbers_grounded"
+        ],
+        "details": {
+          "a_numbers_grounded": "numbers not traceable to the problem text: 0.0075, 386"
+        }
+      }
+    },
+    {
+      "instruction": "A building wall has a thermal resistance of 0.5 m^2*K/W, area 10 m^2, and temperature difference between inside and outside of 20 C. Find the heat transfer rate in W.",
+      "reasoning": "Heat transfer rate can be calculated using the formula Q = (T_s - T_inf) / R * A",
+      "answer_units": "W",
+      "check_expression": "math.log(10)*0.5*20",
+      "answer_numeric": 23.02585092994046,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "hx-A-03",
+      "topic": "heat_exchangers",
+      "subtopic": "Heat duty from LMTD",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-hx-A-03-71",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions"
+        ],
+        "details": {
+          "a_dimensions": "log() of a quantity with units m^2; answer units 'W' are kg m^2 s^-3"
+        }
+      }
+    },
+    {
+      "instruction": "A thin copper sheet with a thickness of 1.5 mm is exposed to a convective environment with air flowing at 2 m/s. The sheet's surface temperature is 85 C, while the ambient air temperature is 20 C. The convective heat transfer coefficient is 15 W/m^2*K. Find the heat transfer rate per unit area in W/m^2.",
+      "reasoning": "The heat transfer rate per unit area can be calculated using Newton's law of cooling, which states that the heat transfer rate is proportional to the convective heat transfer coefficient, the temperature difference between the surface and the ambient air, and the area.",
+      "answer_units": "W/m^2",
+      "check_expression": "15*math.sqrt(2)*85-20",
+      "answer_numeric": 1783.1222920256962,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "hx-A-03",
+      "topic": "heat_exchangers",
+      "subtopic": "Heat duty from LMTD",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-hx-A-03-72",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_precedence",
+          "a_dimensions"
+        ],
+        "details": {
+          "a_precedence": "'85-20' is split by operator precedence; brackets missing?",
+          "a_dimensions": "adds/subtracts kg s^-3 and K in '15 * math.sqrt(2) * 85 - 20'; answer units 'W/m^2' are kg s^-3"
+        }
+      }
+    },
+    {
+      "instruction": "A copper plate (k = 386 W/m*K) is exposed to ambient air (T_inf = 20 C) on one side and to a hot gas (T_s = 80 C) on the other side. The plate has dimensions: length = 0.5 m, width = 0.2 m, and thickness = 0.01 m. Find the heat transfer rate in W.",
+      "reasoning": "This problem requires the application of the heat transfer equation through a flat plate, q = h*A*(T_s - T_inf), where h is the convective heat transfer coefficient, A is the plate area, and T_s and T_inf are the surface and ambient temperatures, respectively.",
+      "answer_units": "W",
+      "check_expression": "math.pi*0.5*0.2*0.01*386*(80-math.log(math.sqrt(0.5**2 + 0.2**2)/0.01))",
+      "answer_numeric": 92.17845669416428,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "hx-A-04",
+      "topic": "heat_exchangers",
+      "subtopic": "Energy balance mass flow",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-hx-A-04-74",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions"
+        ],
+        "details": {
+          "a_dimensions": "adds/subtracts K and dimensionless in '80 - math.log(math.sqrt(0.5 ** 2 + 0.2 ** 2) / 0.01)'; answer units 'W' are kg m^2 s^-3"
+        }
+      }
+    },
+    {
+      "instruction": "A car's radiator is made of copper (k = 386 W/m*K) with a surface area of 0.5 m^2. If the radiator is exposed to ambient air at 25 C, and the engine is at 90 C, how much heat is transferred through the radiator in one hour? Give the answer in J.",
+      "reasoning": "The heat transfer rate is given by the formula h*A*(T_s - T_inf), where h is the convective heat transfer coefficient, A is the surface area, T_s is the surface temperature, and T_inf is the ambient temperature. We assume a constant heat transfer coefficient h = 10 W/m^2*K. The heat transfer rate is then multiplied by the time to get the total heat transferred.",
+      "answer_units": "J",
+      "check_expression": "10*0.5*(90 - 25)*3600",
+      "answer_numeric": 1170000.0,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "energy-A-01",
+      "topic": "energy_balance",
+      "subtopic": "Sensible heat",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-energy-A-01-75",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_numbers_grounded"
+        ],
+        "details": {
+          "a_numbers_grounded": "numbers not traceable to the problem text: 10"
+        }
+      }
+    },
+    {
+      "instruction": "A heat exchanger is used to cool 10 kg of water (cp = 4186 J/kg*K) from 80\u00b0C to 20\u00b0C. If the heat exchanger has a heat transfer coefficient of 100 W/m\u00b2K and a surface area of 2 m\u00b2, how much energy is lost to the surroundings at 10\u00b0C? Give the answer in J.",
+      "reasoning": "The energy lost is equal to the heat transfer rate, which is given by the heat transfer coefficient times the surface area times the temperature difference between the water and the surroundings.",
+      "answer_units": "J",
+      "check_expression": "100*2*(60+273.15-10-273.15)",
+      "answer_numeric": 10000.0,
+      "type": "A",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "energy-A-01",
+      "topic": "energy_balance",
+      "subtopic": "Sensible heat",
+      "generator_model": "llama3.1:latest",
+      "answer_tolerance_rel": 0.02,
+      "id": "gen-energy-A-01-76",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "a_dimensions"
+        ],
+        "details": {
+          "a_dimensions": "formula gives K or kg m^2 s^-3 or kg s^-3 or m^2 K; answer units 'J' are kg m^2 s^-2"
+        }
+      }
+    },
+    {
+      "instruction": "Write a Python function solve_radiation(L, n, T_left, T_right, epsilon) that solves 1-D radiation heat transfer between two parallel plates using the net radiation method. Return the n node temperatures. The governing equation is (T[i] - T[i-1])/L = (T[i] - T[i-1])/(epsilon*L) + (T[i+1] - T[i])/(epsilon*L).",
+      "function_name": "solve_radiation",
+      "reference_solution": "import numpy as np\ndef solve_radiation(L, n, T_left, T_right, epsilon):\n    dx = L/(n-1)\n    T = np.zeros(n)\n    T[0] = T_left\n    T[-1] = T_right\n    for i in range(1, n-1):\n        T[i] = (T[i-1] + T[i+1])/(2.0 + 2.0/epsilon)\n    return list(T)\n",
+      "test_cases": [
+        {
+          "name": "case_1",
+          "args": [
+            1.0,
+            10,
+            100.0,
+            200.0,
+            0.5
+          ],
+          "expected": [
+            100.0,
+            16.666666666666668,
+            2.777777777777778,
+            0.462962962962963,
+            0.0771604938271605,
+            0.012860082304526751,
+            0.0021433470507544587,
+            0.00035722450845907644,
+            33.33339287075141,
+            200.0
+          ],
+          "tol_rel": 1e-06
+        },
+        {
+          "name": "case_2",
+          "args": [
+            2.0,
+            20,
+            50.0,
+            150.0,
+            0.2
+          ],
+          "expected": [
+            50.0,
+            4.166666666666667,
+            0.34722222222222227,
+            0.02893518518518519,
+            0.0024112654320987657,
+            0.0002009387860082305,
+            1.674489883401921e-05,
+            1.3954082361682674e-06,
+            1.1628401968068895e-07,
+            9.690334973390746e-09,
+            8.075279144492288e-10,
+            6.729399287076907e-11,
+            5.607832739230756e-12,
+            4.673193949358963e-13,
+            3.894328291132469e-14,
+            3.2452735759437243e-15,
+            2.70439464661977e-16,
+            2.253662205516475e-17,
+            12.5,
+            150.0
+          ],
+          "tol_rel": 1e-06
+        },
+        {
+          "name": "case_3",
+          "args": [
+            3.0,
+            30,
+            200.0,
+            300.0,
+            0.8
+          ],
+          "expected": [
+            200.0,
+            44.44444444444444,
+            9.876543209876543,
+            2.1947873799725652,
+            0.4877305288827923,
+            0.10838456197395384,
+            0.024085458216434187,
+            0.005352324048096486,
+            0.0011894053440214415,
+            0.00026431229867143144,
+            5.873606637142921e-05,
+            1.3052459193650934e-05,
+            2.9005464874779855e-06,
+            6.445658861062191e-07,
+            1.432368635791598e-07,
+            3.183041412870218e-08,
+            7.073425361933817e-09,
+            1.5718723026519594e-09,
+            3.4930495614487987e-10,
+            7.762332358775109e-11,
+            1.7249627463944687e-11,
+            3.8332505475432634e-12,
+            8.518334550096141e-13,
+            1.892963233354698e-13,
+            4.20658496301044e-14,
+            9.347966584467645e-15,
+            2.0773259076594766e-15,
+            4.616279794798837e-16,
+            66.66666666666667,
+            300.0
+          ],
+          "tol_rel": 1e-06
+        }
+      ],
+      "type": "B",
+      "provenance": "llm_generated_verified",
+      "source_seed_id": "cond-B-02",
+      "topic": "conduction",
+      "subtopic": "1-D conduction with uniform generation",
+      "generator_model": "llama3.1:latest",
+      "id": "gen-cond-B-02-81",
+      "verification": "passed",
+      "quality": {
+        "passed": false,
+        "failed_checks": [
+          "b_temperature_bounds"
+        ],
+        "details": {
+          "b_temperature_bounds": "case_1: output 0.0003572 outside input temperature range [100, 200]"
+        }
+      }
+    }
+  ]
+}
