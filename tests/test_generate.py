@@ -242,6 +242,14 @@ def test_dataset_quality_checks_can_be_turned_off(tmp_path):
     assert len(kept) == 1 and stats["quality_checks"] == "off"
 
 
+def test_dataset_skips_unknown_seed_type(tmp_path):
+    # A seed with an unknown type is skipped and not counted as an attempt.
+    kept, stats, rejected = g.generate_dataset(
+        _write_seed_file(tmp_path, {"id": "x-01", "type": "Z"}), "m", 2)
+    assert kept == [] and rejected == []
+    assert stats["attempted"] == 0
+
+
 ###############################################################################
 # Prompts (pure functions)
 ###############################################################################

@@ -161,6 +161,25 @@ Note that the 3 dots in ``.../src/syntheticheatransfer/generate.py`` should be r
 * ``--model``: LLM model to be used; default is llama3.1:latest
 * ``--per-seed``: number of new problems to be generated per input seed; default is 2.
 
+## Note on quality check and data evaluation
+ 
+Deterministic verification only proves that a generated problem is self-consistent: the answer matches its own formula, or the code runs on its own inputs. It does not prove the physics is right. To measure how well the semantic quality checks in `quality.py` close that gap, the repository includes a hand-labelled evaluation set in `tests/fixtures/`:
+ 
+- `generated_examples_2026-11-02.json`: a frozen copy of the 80 problems kept by the first full generation run (llama3.1:latest, 45 seeds, 2 per seed). It is frozen because `data/generated/` is overwritten on every run.
+- `audit_labels.json`: a verdict for each of those 80 problems (`ok`, `borderline` or `wrong`), the error categories (for example sign, operator precedence, geometry, invented data, wrong physics), and a short note.
+**How the labels were made:** every problem was first labelled by Claude (Anthropic) and then verified by a human reviewer. The file records this in its `labelled_by` and `reviewed_by` fields.
+ 
+**What the audit found:** of the 80 problems that passed deterministic verification, 7 Type A problems were correct and 1 was borderline. The other 72 were wrong, including all 6 Type B problems.
+ 
+**What the quality checks achieve on this set:** the deterministic checks in `quality.py` reject 48 of the 72 wrong problems and none of the 8 correct or borderline ones. Most of the 24 they miss use a formula that is dimensionally consistent but physically wrong. Those are what the optional independent re-solve (`--judge-model`) is for; it has not yet been evaluated against these labels.
+
+`tests/test_quality.py` uses this set as a regression test: CI fails if a change to the checks rejects a correct problem, or catches fewer than 48 wrong ones. To see the per-check breakdown, run:
+ 
+```bash
+python scripts/evaluate_checks.py
+```
+ 
+These figures come from one labelled set of 80 problems from one model, so treat them as an early estimate rather than a general accuracy figure.
 
 ## Project status <a name="project-status"></a>
 **Implemented**

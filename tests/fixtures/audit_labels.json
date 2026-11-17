@@ -1,7 +1,9 @@
 {
   "audited_file": "data/generated/generated_examples.json",
   "audit_date": "2026-11-02",
-  "method": "manual review by Claude, every item",
+  "method": "every item labelled by Claude (Anthropic), then verified by a human reviewer",
+  "labelled_by": "Claude (Anthropic)",
+  "reviewed_by": "human reviewer",
   "labels": {
     "gen-cond-A-01-1": {
       "type": "A",
