@@ -22,6 +22,7 @@ quality verification** for numeric-answer checking and code execution.
 * [Motivation](#motivation)
 * [Pipeline Description](#pipeline)
 * [Quickstart](#quickstart)
+* [Note on quality checks, data evaluation, and the repair loop](#qc&evaluation)
 * [Project status](#project-status)
 * [Contact Information](#contact)
 * [Resources](#resources)
@@ -40,7 +41,7 @@ The correctness signal therefore comes from computation, not from trusting the g
 The released pipeline so far consists of 2 stages to achieve verified data generation.
 * STAGE 1: **BUILD SEEDS** human authored problems ──▶ build_seeds.py ──▶ verification.py checks the human work ──▶ verified seeds.json 
 
-* STAGE 2: **GENERATE DATASET** seeds.json ──▶ LLM generates new problems ──▶ verification.py checks the LLM's work (each with answer + check) ──▶ keep passing, discard failing ──▶ final dataset
+* STAGE 2: **GENERATE DATASET** seeds.json ──▶ LLM generates new problems ──▶ verification.py checks self-consistency ──▶ quality.py checks the physics (and optionally a second model re-solves each problem) ──▶ failures can be sent back to the LLM for repair ──▶ keep passing, set aside failing ──▶ final dataset
 
 The two stages above break down into the following steps:
 
@@ -160,26 +161,46 @@ Note that the 3 dots in ``.../src/syntheticheatransfer/generate.py`` should be r
 * ``--out``: path to where generated examples should be saved; default is the path to ``generated_examples.json`` saved in ``data/generated``.
 * ``--model``: LLM model to be used; default is llama3.1:latest
 * ``--per-seed``: number of new problems to be generated per input seed; default is 2.
+* ``--judge-model``: second LLM for the independent re-solve (e.g. qwen2.5:latest). It should differ from ``--model``, and must be pulled first (ollama pull qwen2.5). Omit it to run only the deterministic quality checks.
+* ``--max-repairs``: how many times a failing draft is sent back to the generator with the failure reasons; default is 0 (no repair).
+* ``--rejected-out``: where problems that fail a quality check are saved; default is ``rejected_examples.json`` saved in ``data/generated``.
+* ``--no-quality-checks``: keep everything that passes deterministic verification (not recommended).
 
-## Note on quality check and data evaluation
- 
-Deterministic verification only proves that a generated problem is self-consistent: the answer matches its own formula, or the code runs on its own inputs. It does not prove the physics is right. To measure how well the semantic quality checks in `quality.py` close that gap, the repository includes a hand-labelled evaluation set in `tests/fixtures/`:
- 
-- `generated_examples_2026-11-02.json`: a frozen copy of the 80 problems kept by the first full generation run (llama3.1:latest, 45 seeds, 2 per seed). It is frozen because `data/generated/` is overwritten on every run.
-- `audit_labels.json`: a verdict for each of those 80 problems (`ok`, `borderline` or `wrong`), the error categories (for example sign, operator precedence, geometry, invented data, wrong physics), and a short note.
-**How the labels were made:** every problem was first labelled by Claude (Anthropic) and then verified by a human reviewer. The file records this in its `labelled_by` and `reviewed_by` fields.
- 
-**What the audit found:** of the 80 problems that passed deterministic verification, 7 Type A problems were correct and 1 was borderline. The other 72 were wrong, including all 6 Type B problems.
- 
-**What the quality checks achieve on this set:** the deterministic checks in `quality.py` reject 48 of the 72 wrong problems and none of the 8 correct or borderline ones. Most of the 24 they miss use a formula that is dimensionally consistent but physically wrong. Those are what the optional independent re-solve (`--judge-model`) is for; it has not yet been evaluated against these labels.
 
-`tests/test_quality.py` uses this set as a regression test: CI fails if a change to the checks rejects a correct problem, or catches fewer than 48 wrong ones. To see the per-check breakdown, run:
+## Note on quality checks, data evaluation, and the repair loop <a name="qc&evaluation"></a>
  
-```bash
-python scripts/evaluate_checks.py
-```
+Deterministic verification proves that a problem is self-consistent: a Type A answer matches its own formula, and Type B code runs on its own inputs. It does not prove the physics is right. A manual audit of the first full run (llama3.1:latest, 45 seeds, 2 per seed) found that of the 80 problems that passed verification, only 7 were correct and 1 was borderline. The other 72 were wrong, including all 6 Type B problems. Typical errors were negative heat rates, missing brackets, wrong areas, values the problem never states, invented formulas, and unstable numerical schemes.
  
-These figures come from one labelled set of 80 problems from one model, so treat them as an early estimate rather than a general accuracy figure.
+**Semantic quality checks (`quality.py`).** Every problem that passes verification goes through:
+ 
+- *Deterministic checks, no model needed.* Type A:
+  - dimensional analysis of the formula, using the units stated in the problem text;
+  - every number in the formula must be traceable to the problem text;
+  - magnitudes (rates, coefficients, times) must be positive;
+  - circular areas from a stated diameter must include the /4;
+  - no missing brackets around a temperature difference;
+  - plausible ranges for heat transfer coefficients, temperatures and view factors.
+  Type B: outputs must be finite; temperature outputs must stay within the range of the temperature inputs when there is no heat source; explicit time-stepping must respect its stability limit.
+- *Independent re-solve, optional.* With `--judge-model`, a second model sees only the problem text and writes its own formula or function. The problem is kept only if the two agree numerically. The comparison is done by code, not by asking a model to judge.
+Problems that fail are not discarded silently: they are written to `data/generated/rejected_examples.json` with the reasons.
+ 
+**How well the checks work.** The 80 audited problems are kept in `tests/fixtures/` as an evaluation set:
+ 
+- `generated_examples_2026-11-02.json`: a frozen copy of the 80 problems. It is frozen because `data/generated/` is overwritten on every run.
+- `audit_labels.json`: a verdict for each problem (`ok`, `borderline` or `wrong`), the error categories, and a short note. Every problem was first labelled by Claude (Anthropic) and then verified by a human reviewer; the file records this in its `labelled_by` and `reviewed_by` fields.
+On this set, the deterministic checks reject 48 of the 72 wrong problems and none of the 8 correct or borderline ones. Most of the 24 they miss use a formula that is dimensionally consistent but physically wrong; that is what the independent re-solve is for. `tests/test_quality.py` uses the set as a regression test: CI fails if a change to the checks rejects a correct problem or catches fewer than 48 wrong ones. For the per-check breakdown, run `python scripts/evaluate_checks.py`. These figures come from one set of 80 problems from one model, so treat them as an early estimate rather than a general accuracy figure.
+ 
+**Repair loop (optional, `--max-repairs N`).** Instead of discarding a failing draft, the pipeline sends the failure reasons back to the generator and asks for a revision, up to N times. For example: "formula gives kg m^3 s^-3; answer units 'W' are kg m^2 s^-3" (a missing thickness), or "numbers not traceable to the problem text: 386". The loop handles three kinds of failure: an expression or function that does not run, failed verification, and failed quality checks.
+ 
+Safeguards against a model that learns to satisfy the checks instead of fixing the physics:
+ 
+- Every revision is checked again from scratch by the same verification and quality checks.
+- The dimension check compares the formula with the units written in the problem text, so changing only the units label does not make a wrong formula pass.
+- When the independent re-solve disagrees, the generator is told only that an independent solver got a different answer, never what that answer was, so the re-solve stays independent.
+Each repaired problem records `repair_rounds` and a `repair_history` (the status and feedback of every round), and the run statistics report `repair_rounds` and `kept_after_repair`.
+ 
+**Status.** The deterministic checks are measured (above). The independent re-solve and the repair loop are implemented and covered by tests with a mocked model, but neither has yet been measured on a real run against hand-labelled problems. Until then, check a sample of their output by hand.
+
 
 ## Project status <a name="project-status"></a>
 **Implemented**
