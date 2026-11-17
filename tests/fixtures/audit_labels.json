@@ -1,0 +1,739 @@
+{
+  "audited_file": "data/generated/generated_examples.json",
+  "audit_date": "2026-11-02",
+  "method": "manual review by Claude, every item",
+  "labels": {
+    "gen-cond-A-01-1": {
+      "type": "A",
+      "source_seed_id": "cond-A-01",
+      "verdict": "wrong",
+      "categories": [
+        "SIGN",
+        "GEOM",
+        "MISSING"
+      ],
+      "note": "negative; pi*d^2 for d=0.02; k=386 and L=1 not given"
+    },
+    "gen-cond-A-01-2": {
+      "type": "A",
+      "source_seed_id": "cond-A-01",
+      "verdict": "wrong",
+      "categories": [
+        "SIGN",
+        "PHYS"
+      ],
+      "note": "negative; radius used as wall thickness for a pipe"
+    },
+    "gen-cond-A-02-3": {
+      "type": "A",
+      "source_seed_id": "cond-A-02",
+      "verdict": "wrong",
+      "categories": [
+        "SIGN",
+        "GEOM"
+      ],
+      "note": "negative; pi*d^2 for d=0.1"
+    },
+    "gen-cond-A-02-4": {
+      "type": "A",
+      "source_seed_id": "cond-A-02",
+      "verdict": "wrong",
+      "categories": [
+        "SIGN",
+        "ILLPOSED"
+      ],
+      "note": "negative; transient wording ('after 10 s') with steady formula"
+    },
+    "gen-cond-A-03-5": {
+      "type": "A",
+      "source_seed_id": "cond-A-03",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "(298-263)**4 instead of 298**4-263**4; emissivity problem in a conduction slot"
+    },
+    "gen-cond-A-03-6": {
+      "type": "A",
+      "source_seed_id": "cond-A-03",
+      "verdict": "wrong",
+      "categories": [
+        "GEOM"
+      ],
+      "note": "pi*0.02^2 for a 2 cm diameter (should be pi*0.01^2)"
+    },
+    "gen-cond-A-04-7": {
+      "type": "A",
+      "source_seed_id": "cond-A-04",
+      "verdict": "wrong",
+      "categories": [
+        "SIGN",
+        "PHYS"
+      ],
+      "note": "negative; invented anisotropy ratio formula"
+    },
+    "gen-cond-A-05-9": {
+      "type": "A",
+      "source_seed_id": "cond-A-05",
+      "verdict": "wrong",
+      "categories": [
+        "MISSING"
+      ],
+      "note": "area 1 m^2 assumed but answer requested in W"
+    },
+    "gen-cond-A-05-10": {
+      "type": "A",
+      "source_seed_id": "cond-A-05",
+      "verdict": "wrong",
+      "categories": [
+        "ILLPOSED"
+      ],
+      "note": "'suddenly heated' transient with a steady conduction formula"
+    },
+    "gen-cond-A-06-11": {
+      "type": "A",
+      "source_seed_id": "cond-A-06",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "k*A*2*dT/2 drops the /L; answer is 2x too large"
+    },
+    "gen-cond-A-06-12": {
+      "type": "A",
+      "source_seed_id": "cond-A-06",
+      "verdict": "wrong",
+      "categories": [
+        "SIGN"
+      ],
+      "note": "negative; otherwise kA dT/L with r=0.05 is fine"
+    },
+    "gen-cond-A-07-13": {
+      "type": "A",
+      "source_seed_id": "cond-A-07",
+      "verdict": "wrong",
+      "categories": [
+        "PREC",
+        "ILLPOSED"
+      ],
+      "note": "80-20/(...) divides only 20; insulation inner radius equals pipe outer radius gives ln(1)=0"
+    },
+    "gen-cond-A-07-14": {
+      "type": "A",
+      "source_seed_id": "cond-A-07",
+      "verdict": "wrong",
+      "categories": [
+        "GEOM"
+      ],
+      "note": "convection area uses pi*r^2*L (a volume) instead of pi*D*L"
+    },
+    "gen-cond-A-08-15": {
+      "type": "A",
+      "source_seed_id": "cond-A-08",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "log(0.5e-3/0.025) is negative: a negative resistance"
+    },
+    "gen-cond-A-08-16": {
+      "type": "A",
+      "source_seed_id": "cond-A-08",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS",
+        "MISSING"
+      ],
+      "note": "plane layers solved with cylindrical formulas; no area given"
+    },
+    "gen-conv-A-01-17": {
+      "type": "A",
+      "source_seed_id": "conv-A-01",
+      "verdict": "wrong",
+      "categories": [
+        "PREC"
+      ],
+      "note": "100*A*250-20 should be 100*A*(250-20)"
+    },
+    "gen-conv-A-01-18": {
+      "type": "A",
+      "source_seed_id": "conv-A-01",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "k*pi*D*L*I^2 is not a heat rate"
+    },
+    "gen-conv-A-02-19": {
+      "type": "A",
+      "source_seed_id": "conv-A-02",
+      "verdict": "wrong",
+      "categories": [
+        "GEOM"
+      ],
+      "note": "area pi*0.1*0.1*2 has an extra 0.1; should be pi*D*L"
+    },
+    "gen-conv-A-02-20": {
+      "type": "A",
+      "source_seed_id": "conv-A-02",
+      "verdict": "ok",
+      "categories": [],
+      "note": ""
+    },
+    "gen-conv-A-03-21": {
+      "type": "A",
+      "source_seed_id": "conv-A-03",
+      "verdict": "wrong",
+      "categories": [
+        "MISSING"
+      ],
+      "note": "conduction rate with no cross-sectional area"
+    },
+    "gen-conv-A-03-22": {
+      "type": "A",
+      "source_seed_id": "conv-A-03",
+      "verdict": "wrong",
+      "categories": [
+        "MISSING"
+      ],
+      "note": "no insulation thickness or pipe length"
+    },
+    "gen-conv-A-04-23": {
+      "type": "A",
+      "source_seed_id": "conv-A-04",
+      "verdict": "wrong",
+      "categories": [
+        "ILLPOSED"
+      ],
+      "note": "'heat transfer from the rod' to ambient solved as axial conduction; no h given"
+    },
+    "gen-conv-A-04-24": {
+      "type": "A",
+      "source_seed_id": "conv-A-04",
+      "verdict": "wrong",
+      "categories": [
+        "ILLPOSED",
+        "PHYS"
+      ],
+      "note": "h = k/r is meaningless; no data to find h"
+    },
+    "gen-conv-A-05-25": {
+      "type": "A",
+      "source_seed_id": "conv-A-05",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS",
+        "MISSING"
+      ],
+      "note": "invented Biot formula; 1.68 and 1.8 not given; k=386 assumed"
+    },
+    "gen-conv-A-05-26": {
+      "type": "A",
+      "source_seed_id": "conv-A-05",
+      "verdict": "wrong",
+      "categories": [
+        "GEOM",
+        "MISSING"
+      ],
+      "note": "cross-section used as conduction area; no thickness"
+    },
+    "gen-conv-A-06-27": {
+      "type": "A",
+      "source_seed_id": "conv-A-06",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "log of a temperature ratio in a convection rate"
+    },
+    "gen-conv-A-06-28": {
+      "type": "A",
+      "source_seed_id": "conv-A-06",
+      "verdict": "wrong",
+      "categories": [
+        "MISSING"
+      ],
+      "note": "h = 10 invented"
+    },
+    "gen-conv-A-07-29": {
+      "type": "A",
+      "source_seed_id": "conv-A-07",
+      "verdict": "wrong",
+      "categories": [
+        "GEOM"
+      ],
+      "note": "exposed end uses lateral area 2*pi*r*L instead of pi*r^2"
+    },
+    "gen-conv-A-07-30": {
+      "type": "A",
+      "source_seed_id": "conv-A-07",
+      "verdict": "wrong",
+      "categories": [
+        "IMPLAUSIBLE"
+      ],
+      "note": "formula matches wording but end temperature is 382,002 C"
+    },
+    "gen-conv-A-08-31": {
+      "type": "A",
+      "source_seed_id": "conv-A-08",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS",
+        "MISSING"
+      ],
+      "note": "invented correlation and properties; 0.0017 W from a coffee mug"
+    },
+    "gen-conv-A-08-32": {
+      "type": "A",
+      "source_seed_id": "conv-A-08",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS",
+        "MISSING"
+      ],
+      "note": "garbled Churchill-Chu with invented properties; pi in a flat-plate area"
+    },
+    "gen-conv-A-09-33": {
+      "type": "A",
+      "source_seed_id": "conv-A-09",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "square root of a product of unrelated quantities"
+    },
+    "gen-conv-A-09-34": {
+      "type": "A",
+      "source_seed_id": "conv-A-09",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "nonsense combination of conduction terms"
+    },
+    "gen-conv-A-10-35": {
+      "type": "A",
+      "source_seed_id": "conv-A-10",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS",
+        "MISSING"
+      ],
+      "note": "invented Blasius-like formula; no viscosity or k given"
+    },
+    "gen-conv-A-10-36": {
+      "type": "A",
+      "source_seed_id": "conv-A-10",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS",
+        "MISSING"
+      ],
+      "note": "invented correlation"
+    },
+    "gen-rad-A-01-39": {
+      "type": "A",
+      "source_seed_id": "rad-A-01",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "uses absolute temperature (120+273.15) as the temperature difference"
+    },
+    "gen-rad-A-01-40": {
+      "type": "A",
+      "source_seed_id": "rad-A-01",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "(T1-T2)^4 instead of T1^4-T2^4; no emissivity; direction reversed"
+    },
+    "gen-rad-A-02-41": {
+      "type": "A",
+      "source_seed_id": "rad-A-02",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "h = 2.7e8 W/m^2K"
+    },
+    "gen-rad-A-02-42": {
+      "type": "A",
+      "source_seed_id": "rad-A-02",
+      "verdict": "wrong",
+      "categories": [
+        "MISSING"
+      ],
+      "note": "h = 0.027 invented"
+    },
+    "gen-rad-A-03-43": {
+      "type": "A",
+      "source_seed_id": "rad-A-03",
+      "verdict": "wrong",
+      "categories": [
+        "ILLPOSED"
+      ],
+      "note": "a convex fin cannot see itself (F_ff = 0); summation rule needs an enclosure"
+    },
+    "gen-rad-A-03-44": {
+      "type": "A",
+      "source_seed_id": "rad-A-03",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS",
+        "MISSING"
+      ],
+      "note": "no h; not a fin formula"
+    },
+    "gen-rad-A-04-45": {
+      "type": "A",
+      "source_seed_id": "rad-A-04",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "nonsense expression"
+    },
+    "gen-rad-A-04-46": {
+      "type": "A",
+      "source_seed_id": "rad-A-04",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "invented network for radiosity"
+    },
+    "gen-rad-A-05-47": {
+      "type": "A",
+      "source_seed_id": "rad-A-05",
+      "verdict": "wrong",
+      "categories": [
+        "MISSING"
+      ],
+      "note": "all view factors invented"
+    },
+    "gen-rad-A-05-48": {
+      "type": "A",
+      "source_seed_id": "rad-A-05",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "fin treated as bare one-sided surface; k ignored"
+    },
+    "gen-fin-A-01-49": {
+      "type": "A",
+      "source_seed_id": "fin-A-01",
+      "verdict": "wrong",
+      "categories": [
+        "MISSING"
+      ],
+      "note": "no velocity or mass flow rate"
+    },
+    "gen-fin-A-01-50": {
+      "type": "A",
+      "source_seed_id": "fin-A-01",
+      "verdict": "wrong",
+      "categories": [
+        "MISSING",
+        "UNITS"
+      ],
+      "note": "k*A*dT has units W*m; no thickness"
+    },
+    "gen-fin-A-02-51": {
+      "type": "A",
+      "source_seed_id": "fin-A-02",
+      "verdict": "wrong",
+      "categories": [
+        "MISSING",
+        "PHYS"
+      ],
+      "note": "wire temperature not given; nonsense sqrt"
+    },
+    "gen-fin-A-02-52": {
+      "type": "A",
+      "source_seed_id": "fin-A-02",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "nonsense area expression"
+    },
+    "gen-fin-A-03-53": {
+      "type": "A",
+      "source_seed_id": "fin-A-03",
+      "verdict": "wrong",
+      "categories": [
+        "PREC",
+        "PHYS"
+      ],
+      "note": "sqrt(...)*80-20 precedence; uses area instead of perimeter in sqrt(hPkA)"
+    },
+    "gen-fin-A-03-54": {
+      "type": "A",
+      "source_seed_id": "fin-A-03",
+      "verdict": "wrong",
+      "categories": [
+        "MISSING",
+        "PHYS"
+      ],
+      "note": "base temperature 20 invented; garbled fin formula"
+    },
+    "gen-fin-A-04-55": {
+      "type": "A",
+      "source_seed_id": "fin-A-04",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "annulus area treated as surface area"
+    },
+    "gen-fin-A-04-56": {
+      "type": "A",
+      "source_seed_id": "fin-A-04",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "nonsense 'effectiveness' expression"
+    },
+    "gen-trans-A-01-57": {
+      "type": "A",
+      "source_seed_id": "trans-A-01",
+      "verdict": "ok",
+      "categories": [],
+      "note": ""
+    },
+    "gen-trans-A-01-58": {
+      "type": "A",
+      "source_seed_id": "trans-A-01",
+      "verdict": "ok",
+      "categories": [],
+      "note": ""
+    },
+    "gen-trans-A-02-59": {
+      "type": "A",
+      "source_seed_id": "trans-A-02",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "nonsense resistance formula"
+    },
+    "gen-trans-A-02-60": {
+      "type": "A",
+      "source_seed_id": "trans-A-02",
+      "verdict": "wrong",
+      "categories": [
+        "GEOM",
+        "PHYS"
+      ],
+      "note": "(0.01**2)**1.5 has no geometric meaning"
+    },
+    "gen-trans-A-03-61": {
+      "type": "A",
+      "source_seed_id": "trans-A-03",
+      "verdict": "wrong",
+      "categories": [
+        "MISSING",
+        "PHYS"
+      ],
+      "note": "ambient 20 C, mass and cp missing; exponent not hA/(m cp)"
+    },
+    "gen-trans-A-04-63": {
+      "type": "A",
+      "source_seed_id": "trans-A-04",
+      "verdict": "wrong",
+      "categories": [
+        "GEOM"
+      ],
+      "note": "convection uses cross-sectional area; no perimeter given"
+    },
+    "gen-trans-A-04-64": {
+      "type": "A",
+      "source_seed_id": "trans-A-04",
+      "verdict": "wrong",
+      "categories": [
+        "MISSING",
+        "PHYS"
+      ],
+      "note": "k = 386 assumed; formula inverted (k/(A dT/L))"
+    },
+    "gen-trans-A-05-65": {
+      "type": "A",
+      "source_seed_id": "trans-A-05",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "invented Biot formula; evaluates to 0.0"
+    },
+    "gen-trans-A-05-66": {
+      "type": "A",
+      "source_seed_id": "trans-A-05",
+      "verdict": "wrong",
+      "categories": [
+        "MISSING",
+        "PHYS"
+      ],
+      "note": "h = 0.1 invented; Bi = h*k/(D*k)"
+    },
+    "gen-hx-A-01-67": {
+      "type": "A",
+      "source_seed_id": "hx-A-01",
+      "verdict": "borderline",
+      "categories": [
+        "ILLPOSED"
+      ],
+      "note": "'heated from 20 to 80' read as end temperatures; formula fine under that reading"
+    },
+    "gen-hx-A-01-68": {
+      "type": "A",
+      "source_seed_id": "hx-A-01",
+      "verdict": "wrong",
+      "categories": [
+        "MISSING"
+      ],
+      "note": "no insulation thickness; cross-section used"
+    },
+    "gen-hx-A-02-69": {
+      "type": "A",
+      "source_seed_id": "hx-A-02",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "dT/(h1+h2) is not a temperature"
+    },
+    "gen-hx-A-02-70": {
+      "type": "A",
+      "source_seed_id": "hx-A-02",
+      "verdict": "wrong",
+      "categories": [
+        "MISSING"
+      ],
+      "note": "371 and 5.1 invented; no h given"
+    },
+    "gen-hx-A-03-71": {
+      "type": "A",
+      "source_seed_id": "hx-A-03",
+      "verdict": "ok",
+      "categories": [],
+      "note": ""
+    },
+    "gen-hx-A-03-72": {
+      "type": "A",
+      "source_seed_id": "hx-A-03",
+      "verdict": "ok",
+      "categories": [],
+      "note": ""
+    },
+    "gen-hx-A-04-73": {
+      "type": "A",
+      "source_seed_id": "hx-A-04",
+      "verdict": "wrong",
+      "categories": [
+        "SIGN",
+        "ILLPOSED"
+      ],
+      "note": "negative; 'mass flow rate of copper' is not physical"
+    },
+    "gen-hx-A-04-74": {
+      "type": "A",
+      "source_seed_id": "hx-A-04",
+      "verdict": "wrong",
+      "categories": [
+        "ILLPOSED"
+      ],
+      "note": "'mass flow rate of the copper pipe' is not physical"
+    },
+    "gen-energy-A-01-75": {
+      "type": "A",
+      "source_seed_id": "energy-A-01",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "m*cp*75*60 has no basis; no cooling model"
+    },
+    "gen-energy-A-01-76": {
+      "type": "A",
+      "source_seed_id": "energy-A-01",
+      "verdict": "wrong",
+      "categories": [
+        "MISSING",
+        "GEOM"
+      ],
+      "note": "dT = 20 invented; cross-section instead of surface area"
+    },
+    "gen-energy-A-02-77": {
+      "type": "A",
+      "source_seed_id": "energy-A-02",
+      "verdict": "ok",
+      "categories": [],
+      "note": ""
+    },
+    "gen-energy-A-02-78": {
+      "type": "A",
+      "source_seed_id": "energy-A-02",
+      "verdict": "ok",
+      "categories": [],
+      "note": ""
+    },
+    "gen-cond-B-01-79": {
+      "type": "B",
+      "source_seed_id": "cond-B-01",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "invented formula; center -31.8 C with surface 20 C and no generation"
+    },
+    "gen-cond-B-02-82": {
+      "type": "B",
+      "source_seed_id": "cond-B-02",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "labelled radiation; conduction solver with arbitrary source; nodes reach -8,302 C"
+    },
+    "gen-conv-B-01-83": {
+      "type": "B",
+      "source_seed_id": "conv-B-01",
+      "verdict": "wrong",
+      "categories": [
+        "UNITS"
+      ],
+      "note": "h = (k/A)*dT has wrong units"
+    },
+    "gen-conv-B-01-84": {
+      "type": "B",
+      "source_seed_id": "conv-B-01",
+      "verdict": "wrong",
+      "categories": [
+        "PHYS"
+      ],
+      "note": "h = k/L is not a convection coefficient; 3 of 5 args unused"
+    },
+    "gen-hx-B-01-85": {
+      "type": "B",
+      "source_seed_id": "hx-B-01",
+      "verdict": "wrong",
+      "categories": [
+        "UNITS"
+      ],
+      "note": "h = kA/dT wrong units; claimed limit is false"
+    },
+    "gen-trans-B-01-87": {
+      "type": "B",
+      "source_seed_id": "trans-B-01",
+      "verdict": "wrong",
+      "categories": [
+        "UNSTABLE"
+      ],
+      "note": "FTCS r ~ 9.8 > 0.5; temperatures reach +/-3e15 C; k used as alpha"
+    }
+  }
+}

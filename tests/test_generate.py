@@ -7,7 +7,10 @@ run offline and deterministically.
 
 What is (and isn't) tested here:
   * Tested: computing answer_numeric from check_expression (Type A); building
-    test_cases by running the reference (Type B); graceful None-return on bad input.
+    test_cases by running the reference (Type B); graceful None-return on bad input;
+    provenance fields (source seed, topic, subtopic, generator model) on generated items.
+  * Also tested: generate_dataset keeps problems that pass the quality checks and
+    returns the rest as rejected (quality.py itself is tested in test_quality.py).
   * Not tested: the real ollama.chat call, main()/CLI, and file writing — these are
     I/O/orchestration and are intentionally left to manual or integration testing.
 
@@ -43,6 +46,8 @@ from syntheticheatransfer import generate as g
 SEED_A = {
     "id": "cond-A-01",
     "type": "A",
+    "topic": "conduction",
+    "subtopic": "plane wall, Fourier's law",
     "instruction": "example",
     "check_expression": "1.2*(300-50)/0.15",
     "answer_units": "W/m^2",
@@ -63,6 +68,21 @@ def test_type_a_valid_computes_answer():
     assert problem["answer_numeric"] == pytest.approx(1600.0)
     assert problem["provenance"] == "llm_generated_verified"
     assert problem["source_seed_id"] == "cond-A-01"
+
+
+def test_type_a_records_provenance():
+    # Generated items must record the seed's topic/subtopic and the generator model.
+    _MockOllama.next_response = {
+        "instruction": "A wall ...",
+        "reasoning": "q = k*dT/L",
+        "answer_units": "W/m^2",
+        "check_expression": "2.0*(100-20)/0.1",
+    }
+    problem = g.generate_one_a(SEED_A, "test-model")
+    assert problem is not None
+    assert problem["generator_model"] == "test-model"
+    assert problem["topic"] == "conduction"
+    assert problem["subtopic"] == "plane wall, Fourier's law"
 
 
 def test_type_a_uses_math_and_numpy():
@@ -106,6 +126,8 @@ def test_type_a_disallowed_name_returns_none():
 SEED_B = {
     "id": "cond-B-01",
     "type": "B",
+    "topic": "conduction",
+    "subtopic": "1-D steady finite difference",
     "instruction": "example",
     "function_name": "solve",
     "reference_solution": "def solve():\n    return 0\n",
@@ -128,6 +150,24 @@ def test_type_b_valid_builds_test_cases():
     assert problem["test_cases"][1]["expected"] == [0, 10]
 
 
+def test_type_b_records_provenance_and_drops_test_args():
+    # Provenance is recorded, and the raw test_args are not kept because the same
+    # inputs are stored in test_cases[i]["args"].
+    _MockOllama.next_response = {
+        "instruction": "double each",
+        "function_name": "double_all",
+        "reference_solution": "def double_all(xs):\n    return [x*2 for x in xs]\n",
+        "test_args": [[[1, 2, 3]], [[0, 5]]],
+    }
+    problem = g.generate_one_b(SEED_B, "test-model")
+    assert problem is not None
+    assert problem["generator_model"] == "test-model"
+    assert problem["topic"] == "conduction"
+    assert problem["subtopic"] == "1-D steady finite difference"
+    assert "test_args" not in problem
+    assert [c["args"] for c in problem["test_cases"]] == [[[1, 2, 3]], [[0, 5]]]
+
+
 def test_type_b_runtime_error_returns_none():
     # Code that raises on its own test args must be dropped (like ZeroDivisionError).
     _MockOllama.next_response = {
@@ -148,6 +188,58 @@ def test_type_b_wrong_function_name_returns_none():
         "test_args": [[]],
     }
     assert g.generate_one_b(SEED_B, "test-model") is None
+
+
+###############################################################################
+# generate_dataset: verification + quality checks
+###############################################################################
+
+def _write_seed_file(tmp_path, seed):
+    path = tmp_path / "seeds.json"
+    path.write_text(json.dumps({"seeds": [seed]}))
+    return path
+
+
+def test_dataset_keeps_problem_that_passes_quality_checks(tmp_path):
+    _MockOllama.next_response = {
+        "instruction": ("A plane wall 0.2 m thick with area 3 m^2 has k = 0.6 W/m*K. Its "
+                        "surfaces are at 25 C and 15 C. Find the heat transfer rate in W."),
+        "reasoning": "Q = k*A*dT/L",
+        "answer_units": "W",
+        "check_expression": "0.6*3*(25-15)/0.2",
+    }
+    kept, stats, rejected = g.generate_dataset(_write_seed_file(tmp_path, SEED_A), "m", 1)
+    assert len(kept) == 1 and rejected == []
+    assert kept[0]["quality_checks"] == "passed"
+    assert stats["failed_quality"] == 0 and stats["quality_checks"] == "deterministic"
+
+
+def test_dataset_rejects_problem_that_fails_quality_checks(tmp_path):
+    # Self-consistent (passes verification) but the heat rate is negative.
+    _MockOllama.next_response = {
+        "instruction": ("A plane wall 0.2 m thick with area 3 m^2 has k = 0.6 W/m*K. Its "
+                        "surfaces are at 25 C and 15 C. Find the heat transfer rate in W."),
+        "reasoning": "Q = k*A*dT/L",
+        "answer_units": "W",
+        "check_expression": "0.6*3*(15-25)/0.2",
+    }
+    kept, stats, rejected = g.generate_dataset(_write_seed_file(tmp_path, SEED_A), "m", 1)
+    assert kept == [] and len(rejected) == 1
+    assert "a_positive_magnitude" in rejected[0]["quality"]["failed_checks"]
+    assert stats["failed_quality"] == 1
+    assert stats["failed_by_check"]["a_positive_magnitude"] == 1
+
+
+def test_dataset_quality_checks_can_be_turned_off(tmp_path):
+    _MockOllama.next_response = {
+        "instruction": "A wall ... Find the heat transfer rate in W.",
+        "reasoning": "r",
+        "answer_units": "W",
+        "check_expression": "0.6*3*(15-25)/0.2",
+    }
+    kept, stats, rejected = g.generate_dataset(_write_seed_file(tmp_path, SEED_A), "m", 1,
+                                               quality_checks=False)
+    assert len(kept) == 1 and stats["quality_checks"] == "off"
 
 
 ###############################################################################
